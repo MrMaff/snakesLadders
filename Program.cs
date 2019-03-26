@@ -12,6 +12,14 @@ namespace SnakesAndLadders
         static void Main(string[] args)
         {
             //Hello
+            int[] plrpstn = new int[5];
+        }
+        
+        //changes player location
+        static void Move(int place, int roll)
+        {
+            int dieroll = 0;
+            place = place + roll;
         }
     }
 }
