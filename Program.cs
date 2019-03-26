@@ -82,7 +82,8 @@ namespace SnakesAndLadders
 
             Squares[98].Action = -21;
             Squares[98].Type = "S";
-
+            
+            Squares[99].Type  = "W"
             return Squares;
         }
         static int GetDieValue()
