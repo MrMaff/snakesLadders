@@ -1,5 +1,5 @@
-//Paste your code below
 using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,20 +9,34 @@ namespace SnakesAndLadders
 {
     class Program
     {
+        class Square
+    {
+        public string Type;
+        public int Action;
+        public ConsoleColor? PlayerColour;
+
+        public Square()
+        {
+            this.Type = "N";
+            this.Action = 0;
+            this.PlayerColour = null;
+        }
+    }
+        
         static void Main(string[] args)
         {
             int numOfPlayers = 0;
             CollectData(ref numOfPlayers);
             int[] plrpstn = new int[5];
         }
-        
+
         //changes player location
         static void Move(int place, int roll)
         {
             int dieroll = 0;
             place = place + roll;
         }
-        
+
         static Square[] LoadBoard()
         {
             Square[] Squares = new Square[100];
@@ -71,24 +85,7 @@ namespace SnakesAndLadders
 
             return Squares;
         }
-        
-    }
-    
-    class Square
-    {
-        public string Type;
-        public int Action;
-        public ConsoleColor? PlayerColour;
-        
-        public Square()
-        {
-            this.Type = "N";
-            this.Action = 0;
-            this.PlayerColour = null;
-        }
-    }
-    
-    static int GetDieValue()
+        static int GetDieValue()
         {
             int roll1;
             int roll2;
@@ -125,8 +122,8 @@ namespace SnakesAndLadders
             //Creates dice values
             Random randomNumber = new Random();
             return random = randomNumber.Next(1, 7);
-        }     
-        
+        }
+
         static bool Double(int roll1, int roll2)
         {
             bool doubleTurn = false;
@@ -147,4 +144,7 @@ namespace SnakesAndLadders
             int total = roll1 + roll2;
             return total;
         }
+    }
+
 }
+
