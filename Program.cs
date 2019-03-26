@@ -122,6 +122,10 @@ namespace SnakesAndLadders
         static Square[] LoadBoard()
         {
             Square[] Squares = new Square[100];
+            
+            for(int i = 0; i < Squares.Length; i++){
+             Squares[i] = new Square();   
+            }
 
             Squares[3].Action = 10;
             Squares[3].Type = "L";
