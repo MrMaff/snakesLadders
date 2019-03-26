@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SnakesAndLadders
 {
-     class Player
+    class Player
     {
         protected string name;
         protected string colour;
@@ -30,10 +30,8 @@ namespace SnakesAndLadders
             set { this.colour = value; }
         }
     }
-    
-    class Program
-    {
-        class Square
+
+    class Square
     {
         public string Type;
         public int Action;
@@ -46,7 +44,10 @@ namespace SnakesAndLadders
             this.PlayerColour = null;
         }
     }
-        
+    class Program
+    {
+
+
         static void Main(string[] args)
         {
             int numOfPlayers = 0;
@@ -54,9 +55,9 @@ namespace SnakesAndLadders
             int[] plrpstn = new int[5];
         }
 
-         public static void CollectData(ref int numOfPlayers)
+        public static void CollectData(ref int numOfPlayers)
         {
-            List<string> colourOptions = new List<string>(new string[] { "Red","Green","Blue","Cyan","Magenta"});
+            List<string> colourOptions = new List<string>(new string[] { "Red", "Green", "Blue", "Cyan", "Magenta" });
 
             bool intCheck = false;
             while (intCheck == false)
@@ -103,11 +104,14 @@ namespace SnakesAndLadders
                         currentColour = colourOptions[colourChoice - 1];
                         colourOptions.RemoveAt(colourChoice - 1);
                     }
-                players[i] = new Player(currentName, currentColour);
+                    players[i] = new Player(currentName, currentColour);
+                }
+                Console.ReadKey();
             }
-            Console.ReadKey();
+
+
         }
-    
+
         //changes player location
         static void Move(int place, int roll)
         {
@@ -160,15 +164,15 @@ namespace SnakesAndLadders
 
             Squares[98].Action = -21;
             Squares[98].Type = "S";
-            
-            Squares[99].Type  = "W";
+
+            Squares[99].Type = "W";
             return Squares;
         }
-        
-         static void ApplyRules(int position, int length)
+
+        static void ApplyRules(int position, int length)
         {
             Square currentsquare = squares[plrpstn[0]];
-            if (currentsquare.Type == "S");
+            if (currentsquare.Type == "S") ;
             {
                 position = position - length;
             }
@@ -181,7 +185,7 @@ namespace SnakesAndLadders
                 string winplayer = currentplayer;
             }
         }
-        
+
         static int GetDieValue()
         {
             int roll1;
@@ -242,6 +246,4 @@ namespace SnakesAndLadders
             return total;
         }
     }
-
 }
-
