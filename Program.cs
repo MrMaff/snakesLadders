@@ -11,15 +11,13 @@ namespace SnakesAndLadders
     {
         static void Main(string[] args)
         {
-            int numOfPlayers = 0;
-            CollectData(ref numOfPlayers);
+            //Hello
             int[] plrpstn = new int[5];
         }
         
         //changes player location
         static void Move(int place, int roll)
         {
-            int dieroll = 0;
             place = place + roll;
         }
         
@@ -71,7 +69,22 @@ namespace SnakesAndLadders
 
             return Squares;
         }
-        
+        static void ApplyRules(int position, int length)
+        {
+            Square currentsquare = squares[plrpstn[0]];
+            if (currentsquare.Type == "S");
+            {
+                position = position - length;
+            }
+            if (currentsquare.Type == "L")
+            {
+                position = position + length;
+            }
+            if (currentsquare.Type == "W")
+            {
+                string winplayer = currentplayer;
+            }
+        }
     }
     
     class Square
@@ -87,64 +100,4 @@ namespace SnakesAndLadders
             this.PlayerColour = null;
         }
     }
-    
-    static int GetDieValue()
-        {
-            int roll1;
-            int roll2;
-            bool doubleTurn = false;
-            int total = 0;
-
-            //Rolls dice twice
-            roll1 = RollDice();
-            Thread.Sleep(15);
-            roll2 = RollDice();
-
-            Console.WriteLine(roll1);
-            Console.WriteLine(roll2);
-
-            //Checks if values the same. If so, returns bool true
-            doubleTurn = Double(roll1, roll2);
-
-            //Adds total of two rolls
-            total = CalculateTotal(roll1, roll2) + total;
-
-            //If first two rolls double, rolls third dice
-            if (doubleTurn == true)
-            {
-                total = total + RollDice();
-            }
-
-            return total;
-        }
-
-        static int RollDice()
-        {
-            int random = 0;
-
-            //Creates dice values
-            Random randomNumber = new Random();
-            return random = randomNumber.Next(1, 7);
-        }     
-        
-        static bool Double(int roll1, int roll2)
-        {
-            bool doubleTurn = false;
-
-            //Checks to see if values the same
-            if (roll1 == roll2)
-            {
-                Console.WriteLine("You got a double!!");
-                doubleTurn = true;
-            }
-
-            return doubleTurn;
-        }
-
-        static int CalculateTotal(int roll1, int roll2)
-        {
-            //Creates total of rolls
-            int total = roll1 + roll2;
-            return total;
-        }
 }
