@@ -11,7 +11,8 @@ namespace SnakesAndLadders
     {
         static void Main(string[] args)
         {
-            //Hello
+            int numOfPlayers = 0;
+            CollectData(ref numOfPlayers);
             int[] plrpstn = new int[5];
         }
         
