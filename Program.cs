@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SnakesAndLadders
 {
-     class Player
+    class Player
     {
         protected string name;
         protected string colour;
@@ -30,10 +30,8 @@ namespace SnakesAndLadders
             set { this.colour = value; }
         }
     }
-    
-    class Program
-    {
-        class Square
+
+    class Square
     {
         public string Type;
         public int Action;
@@ -46,7 +44,10 @@ namespace SnakesAndLadders
             this.PlayerColour = null;
         }
     }
-        
+    class Program
+    {
+
+
         static void Main(string[] args)
         {
             int numOfPlayers = 0;
@@ -54,9 +55,9 @@ namespace SnakesAndLadders
             int[] plrpstn = new int[5];
         }
 
-         public static void CollectData(ref int numOfPlayers)
+        public static void CollectData(ref int numOfPlayers)
         {
-            List<string> colourOptions = new List<string>(new string[] { "Red","Green","Blue","Cyan","Magenta"});
+            List<string> colourOptions = new List<string>(new string[] { "Red", "Green", "Blue", "Cyan", "Magenta" });
 
             bool intCheck = false;
             while (intCheck == false)
@@ -103,11 +104,14 @@ namespace SnakesAndLadders
                         currentColour = colourOptions[colourChoice - 1];
                         colourOptions.RemoveAt(colourChoice - 1);
                     }
-                players[i] = new Player(currentName, currentColour);
+                    players[i] = new Player(currentName, currentColour);
+                }
+                Console.ReadKey();
             }
-            Console.ReadKey();
+
+
         }
-    
+
         //changes player location
         static void Move(int place, int roll)
         {
@@ -118,6 +122,10 @@ namespace SnakesAndLadders
         static Square[] LoadBoard()
         {
             Square[] Squares = new Square[100];
+            
+            for(int i = 0; i < Squares.Length; i++){
+             Squares[i] = new Square();   
+            }
 
             Squares[3].Action = 10;
             Squares[3].Type = "L";
@@ -160,15 +168,15 @@ namespace SnakesAndLadders
 
             Squares[98].Action = -21;
             Squares[98].Type = "S";
-            
-            Squares[99].Type  = "W";
+
+            Squares[99].Type = "W";
             return Squares;
         }
-        
-         static void ApplyRules(int position, int length)
+
+        static void ApplyRules(int position, int length)
         {
             Square currentsquare = squares[plrpstn[0]];
-            if (currentsquare.Type == "S");
+            if (currentsquare.Type == "S") ;
             {
                 position = position - length;
             }
@@ -181,7 +189,7 @@ namespace SnakesAndLadders
                 string winplayer = currentplayer;
             }
         }
-        
+
         static int GetDieValue()
         {
             int roll1;
@@ -241,7 +249,160 @@ namespace SnakesAndLadders
             int total = roll1 + roll2;
             return total;
         }
+        
+                public static void DisplayBoard(Square[] Squares)
+        {
+            Console.Clear();
+
+            //Loops through the rows
+            for (int y = 0; y < 10; y++)
+            {
+                //goes through the top of a row
+                for (int i = 0; i <= 100; i++)
+                {
+                    //checks to see if there is new column
+                    if (i % 10 == 0)
+                    {
+                        //works out what square it is in
+                        int temp = CalculateLocation(i, y);
+
+                        //checks to see if the current square is occupied
+                        if (Squares[temp - 1].PlayerColour != null)
+                        {
+                            //changes the colour
+                            Console.BackgroundColor = (ConsoleColor)Squares[temp - 1].PlayerColour;
+                        }
+                        else
+                        {
+                            //puts the colour back
+                            Console.BackgroundColor = ConsoleColor.Black;
+                        }
+                        //prints the column divider
+                        Console.Write("█");
+                    }
+                    else
+                    {
+                        //prints the row divider
+                        Console.Write("▀");
+                    }
+                }
+                //moves to the next line
+                Console.Write("\n");
+
+
+                //does the middle of the row
+                for (int i = 0; i <= 100; i++)
+                {
+                    //checks to see if its at the number location
+                    if (i % 10 == 2)
+                    {
+                        //finds the current square
+                        int temp = CalculateLocation(i, y);
+
+                        //prints the square number
+                        Console.Write(temp);
+
+                        //accounts for any extra characters
+                        i += temp.ToString().Length - 1;
+                    }
+                    //checks to see if it is at a new column
+                    else if (i % 10 == 0)
+                    {
+                        //finds the current square
+                        int temp = CalculateLocation(i, y);
+
+                        //checks to see if that square is occupied
+                        if (Squares[temp - 1].PlayerColour != null)
+                        {
+                            Console.BackgroundColor = (ConsoleColor)Squares[temp - 1].PlayerColour;
+                        }
+                        else
+                        {
+                            Console.BackgroundColor = ConsoleColor.Black;
+                        }
+                        //prints the new column
+                        Console.Write("█");
+                    }
+                    //checks to see if its at a point for printing square details
+                    else if (i % 10 == 6)
+                    {
+                        //finds the current square
+                        int temp = CalculateLocation(i, y);
+
+                        temp--;
+
+                        //checks to see if that square has any actions
+                        if (Squares[temp].Type != "N")
+                        {
+                            //Collects the details to print
+                            string toPrint = Squares[temp].Type + Math.Sqrt(Math.Pow(Squares[temp].Action, 2)).ToString();
+
+                            //writes the to the screen
+                            Console.Write(toPrint);
+                            i += toPrint.Length - 1;
+                        }
+                        else
+                        {
+                            Console.Write(" ");
+                        }
+                    }
+                    else
+                    {
+                        Console.Write(" ");
+                    }
+                }
+
+                //goes to a new line
+                Console.Write("\n");
+
+                //loops through the bottom of each row
+                for (int i = 0; i <= 100; i++)
+                {
+                    //checks to see if it has hit a new column
+                    if (i % 10 == 0)
+                    {
+                        //finds the current square
+                        int temp = CalculateLocation(i, y);
+
+                        //checks to see if this square is occupied
+                        if (Squares[temp - 1].PlayerColour != null)
+                        {
+                            //changes the colour to the player colour
+                            Console.BackgroundColor = (ConsoleColor)Squares[temp - 1].PlayerColour;
+                        }
+                        else
+                        {
+                            //changes the colour back to its original equation
+                            Console.BackgroundColor = ConsoleColor.Black;
+                        }
+                        //prints the column border
+                        Console.Write("█");
+                    }
+                    else
+                    {
+                        //prints the row border
+                        Console.Write("▄");
+                    }
+                }
+                //prints the new line
+                Console.Write("\n");
+            }
+
+
+            //goes back to the top of the screen.
+            Console.SetCursorPosition(0, 0);
+        }
+
+        public static int CalculateLocation(int i, int y)
+        {
+
+            //complicated maths
+            int temp = (((i - (i % 10)) / 10) + 1);
+            int temp2 = temp;
+            temp += y * 10;
+            temp = temp + (y % 2) * (9 - (temp2 - 1) * 2);
+            temp = 101 - temp;
+            return temp;
+        }
     }
-
 }
-
