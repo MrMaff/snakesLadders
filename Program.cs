@@ -29,13 +29,36 @@ namespace SnakesAndLadders
             get { return this.colour; }
             set { this.colour = value; }
         }
+       
     }
 
     class Square
     {
-        public string Type;
-        public int Action;
-        public ConsoleColor? PlayerColour;
+        protected string type;
+        protected int action;
+        protected ConsoleColor? playerColour;
+        
+        public string Type
+        {
+            get {return this.type;}
+            set {
+            if((value=="S")||(value=="L")||(value=="N"))
+            {
+                this.type=value;
+            }
+            else this.type="N";
+        }
+            
+        public int Action
+        {
+            get {return this.action;}
+            set {this.action=value;}
+        }
+            
+        public ConsoleColor? PlayerColour
+        {
+            get{return this.playerColour;}
+            set{this.playerColour=value;}
 
         public Square()
         {
@@ -112,12 +135,6 @@ namespace SnakesAndLadders
 
         }
 
-        //changes player location
-        static void Move(int place, int roll)
-        {
-            int dieroll = 0;
-            place = place + roll;
-        }
 
         static Square[] LoadBoard()
         {
