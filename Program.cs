@@ -15,6 +15,8 @@ namespace SnakesAndLadders
 
         public Player(string _name, ConsoleColor? _colour)
         {
+            // pos = 0, where square #1 = (pos = 1)
+            this.pos = 0;
             this.name = _name;
             this.colour = _colour;
         }
@@ -24,7 +26,7 @@ namespace SnakesAndLadders
             get { return this.name; }
             set { this.name = value; }
         }
-
+        
         public int Pos
         {
             get { return this.pos; }
