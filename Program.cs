@@ -10,9 +10,10 @@ namespace SnakesAndLadders
     class Player
     {
         protected string name;
-        protected string colour;
+        protected ConsoleColor? colour;
+        protected int pos;
 
-        public Player(string _name, string _colour)
+        public Player(string _name, ConsoleColor? _colour)
         {
             this.name = _name;
             this.colour = _colour;
@@ -24,7 +25,13 @@ namespace SnakesAndLadders
             set { this.name = value; }
         }
 
-        public string Colour
+        public int Pos
+        {
+            get { return this.pos; }
+            set { this.pos = value; }
+        }
+        
+        public ConsoleColor? Colour
         {
             get { return this.colour; }
             set { this.colour = value; }
@@ -70,12 +77,53 @@ namespace SnakesAndLadders
     class Program
     {
 
-
-        static void Main(string[] args)
+         static void Main(string[] args)
         {
+
             int numOfPlayers = 0;
-            CollectData(ref numOfPlayers);
-            int[] plrpstn = new int[5];
+            bool win;
+            Player[] players = CollectData(ref numOfPlayers);
+            int[] plrpstn = new int[numOfPlayers];
+            Square[] squares = LoadBoard();
+            win = TakePlayerTurn(numOfPlayers, players, squares);
+
+        }
+
+        public static bool TakePlayerTurn(int numOfPlayers, Player[] players, Square[] squares)
+        {
+            bool win = false;
+            int tempPlayerRollVal = 0;  // ∴
+
+            do
+            {
+                for (int i = 0; i < numOfPlayers; i++)
+                {
+                    tempPlayerRollVal = GetDieValue();
+                    Console.WriteLine($"{players[i].Name}, you have rolled a {tempPlayerRollVal}");
+                    //Determines new player position
+                    squares[players[i].Pos].PlayerColour = null;
+                    players[i].Pos = players[i].Pos + tempPlayerRollVal;
+                    //Player position is updated based on snake, ladder or nothing
+                    int length = squares[players[i].Pos].Action; // <===    May or may not be correct            
+                    players[i].Pos = players[i].Pos + length;
+                    //Re-colours square of the player
+                    squares[players[i].Pos].PlayerColour = players[i].Colour;
+                    //ApplyRules(players[i].Pos, length);
+                    Console.WriteLine($"Your current position is {players[i].Pos}");
+
+                    if (players[i].Pos >= 99)
+                    {
+                        Console.WriteLine($"{players[i].Name} has won the game!");
+                        win = true;
+                        break; //exit the for loop...mabye
+                    }
+
+                }
+
+            } while (win == false);
+
+            return win;
+            
         }
 
         public static void CollectData(ref int numOfPlayers)
