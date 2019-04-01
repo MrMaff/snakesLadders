@@ -317,10 +317,11 @@ namespace SnakesAndLadders
             return total;
         }
         
-                public static void DisplayBoard(Square[] Squares)
+                        public static void DisplayBoard(Square[] Squares)
         {
             Console.Clear();
-
+            ConsoleColor BackgroundColour = Console.BackgroundColor;
+            
             //Loops through the rows
             for (int y = 0; y < 10; y++)
             {
@@ -342,7 +343,7 @@ namespace SnakesAndLadders
                         else
                         {
                             //puts the colour back
-                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.BackgroundColor = BackgroundColour;
                         }
                         //prints the column divider
                         Console.Write("█");
@@ -385,7 +386,7 @@ namespace SnakesAndLadders
                         }
                         else
                         {
-                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.BackgroundColor = BackgroundColour;
                         }
                         //prints the new column
                         Console.Write("█");
@@ -440,7 +441,7 @@ namespace SnakesAndLadders
                         else
                         {
                             //changes the colour back to its original equation
-                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.BackgroundColor = BackgroundColour;
                         }
                         //prints the column border
                         Console.Write("█");
@@ -458,6 +459,14 @@ namespace SnakesAndLadders
 
             //goes back to the top of the screen.
             Console.SetCursorPosition(0, 0);
+            Console.BackgroundColor = BackgroundColour;
+
+
+
+
+            //PrintSnakes(Squares);
+            //PrintLadders(Squares);
+            //JustText(Squares);
         }
 
         public static int CalculateLocation(int i, int y)
@@ -470,6 +479,234 @@ namespace SnakesAndLadders
             temp = temp + (y % 2) * (9 - (temp2 - 1) * 2);
             temp = 101 - temp;
             return temp;
+        }
+
+        public static void PrintLadders(Square[] Squares)
+        {
+            for(int i = 0; i < Squares.Length; i++)
+            {
+                if(Squares[i].Type == "L")
+                {
+                    int startingPointX;
+                    int startingPointY;
+                    int endingPointX;
+                    int endingPointY;
+                    int newLocation = i + Squares[i].Action;
+                    double gradient;
+
+                    if ((i / 10) % 2 == 0)
+                    {
+                        startingPointX = (((i % 10)) * 10) + 6;
+                        startingPointY = ((10 - (i / 10)) * 3) - 2;
+                    }
+                    else
+                    {
+                        startingPointX = ((9-(i % 10)) * 10) + 6;
+                        startingPointY = ((10 - (i / 10)) * 3) - 2;
+                    }
+
+                    if ((newLocation / 10) % 2 == 0)
+                    {
+                        endingPointX = (((newLocation % 10)) * 10) + 6;
+                        endingPointY = ((10 - (newLocation / 10)) * 3) - 2;
+                    }
+                    else
+                    {
+                        endingPointX = ((9 - (newLocation % 10)) * 10) + 6;
+                        endingPointY = ((10 - (newLocation / 10)) * 3) - 2;
+                    }
+
+                    gradient = (double)(startingPointY - endingPointY) / (double)(endingPointX - startingPointX);
+                    if (gradient == double.PositiveInfinity)
+                    {
+                        double x = startingPointX;
+                        for (int y = startingPointY; y >= endingPointY; y--)
+                        {
+                            PrintSomething((int)x, (int)y);
+                            PrintSomething((int)x + 1, (int)y);
+                        }
+                    }
+                    else if (gradient < 0)
+                    {
+                        double y = startingPointY;
+                        for (int x = startingPointX; x >= endingPointX; x--)
+                        {
+                            PrintSomething((int)x, (int)y);
+                            PrintSomething((int)x + 1, (int)y);
+                            if (gradient < -1)
+                            {
+                                PrintSomething((int)x + 1, (int)y + 1);
+                                PrintSomething((int)x, (int)y + 1);
+                            }
+                            y -= (-gradient);
+                        }
+                    }
+                    else
+                    {
+                        double y = startingPointY;
+                        for (int x = startingPointX; x <= endingPointX; x++)
+                        {
+                            PrintSomething((int)x, (int)y);
+                            PrintSomething((int)x + 1, (int)y);
+                            if (gradient > 1)
+                            {
+                                PrintSomething((int)x + 1, (int)y + 1);
+                                PrintSomething((int)x, (int)y + 1);
+                            }
+                            y -= (gradient);
+                        }
+                    }
+                    
+
+                }
+            }
+        }
+
+        public static void PrintSomething(int x, int y, ConsoleColor Colour = ConsoleColor.Magenta)
+        {
+            Console.SetCursorPosition(x, y);
+            ConsoleColor temp;
+            temp = Console.ForegroundColor;
+            Console.ForegroundColor = Colour;
+            Console.Write("█");
+            Console.ForegroundColor = temp;
+        }
+
+        private static void JustText(Square[] Squares)
+        {
+            ConsoleColor temp2 = Console.BackgroundColor;
+            //Loops through the rows
+            for (int y = 0; y < 10; y++)
+            {
+
+                //does the middle of the row
+                for (int i = 0; i <= 100; i++)
+                {
+                    //checks to see if its at the number location
+                    if (i % 10 == 2)
+                    {
+                        //finds the current square
+                        int temp = CalculateLocation(i, y);
+
+                        Console.SetCursorPosition(i, (y*3)+1);
+
+                        //prints the square number
+                        Console.Write(temp);
+
+                        //accounts for any extra characters
+                        i += temp.ToString().Length - 1;
+                    }
+                }
+            }
+        }
+
+        public static void PrintSnakes(Square[] Squares)
+        {
+            for (int i = 0; i < Squares.Length; i++)
+            {
+                if (Squares[i].Type == "S")
+                {
+                    int startingPointX;
+                    int startingPointY;
+                    int endingPointX;
+                    int endingPointY;
+                    int newLocation = i + Squares[i].Action;
+                    double gradient;
+
+                    if ((i / 10) % 2 == 0)
+                    {
+                        startingPointX = (((i % 10)) * 10) + 6;
+                        startingPointY = ((10 - (i / 10)) * 3) - 2;
+                    }
+                    else
+                    {
+                        startingPointX = ((9 - (i % 10)) * 10) + 6;
+                        startingPointY = ((10 - (i / 10)) * 3) - 2;
+                    }
+
+                    if ((newLocation / 10) % 2 == 0)
+                    {
+                        endingPointX = (((newLocation % 10)) * 10) + 6;
+                        endingPointY = ((10 - (newLocation / 10)) * 3) - 2;
+                    }
+                    else
+                    {
+                        endingPointX = ((9 - (newLocation % 10)) * 10) + 6;
+                        endingPointY = ((10 - (newLocation / 10)) * 3) - 2;
+                    }
+
+                    gradient = (double)(startingPointY - endingPointY) / (double)(endingPointX - startingPointX);
+                    if (gradient == double.NegativeInfinity)
+                    {
+                        double x = startingPointX;
+                        for (int y = startingPointY; y <= endingPointY; y++)
+                        {
+                            ConsoleColor Colour;
+                            if(y % 2 == 0)
+                            {
+                                Colour = ConsoleColor.DarkRed;
+                            }
+                            else
+                            {
+                                Colour = ConsoleColor.DarkYellow;
+                            }
+                            PrintSomething((int)x, (int)y, Colour);
+                            PrintSomething((int)x + 1, (int)y, Colour);
+                        }
+                    }
+                    else if(gradient < 0)
+                    {
+                        double y = startingPointY;
+                        for (int x = startingPointX; x <= endingPointX; x++)
+                        {
+                            ConsoleColor Colour;
+                            if (x % 2 == 0)
+                            {
+                                Colour = ConsoleColor.DarkRed;
+                            }
+                            else
+                            {
+                                Colour = ConsoleColor.DarkYellow;
+                            }
+                            PrintSomething((int)x, (int)y, Colour);
+                            PrintSomething((int)x + 1, (int)y, Colour);
+                            if(gradient < -1)
+                            {
+                                PrintSomething((int)x + 1, (int)y + 1, Colour);
+                                PrintSomething((int)x, (int)y + 1, Colour);
+                            }
+                            y -= (gradient);
+                            
+                        }
+                    }
+                    else 
+                    {
+                        double y = startingPointY;
+                        for (int x = startingPointX; x >= endingPointX; x--)
+                        {
+                            ConsoleColor Colour;
+                            if (x % 2 == 0)
+                            {
+                                Colour = ConsoleColor.DarkRed;
+                            }
+                            else
+                            {
+                                Colour = ConsoleColor.DarkYellow;
+                            }
+                            PrintSomething((int)x, (int)y, Colour);
+                            PrintSomething((int)x + 1, (int)y, Colour);
+                            if (gradient > 1)
+                            {
+                                PrintSomething((int)x + 1, (int)y + 1, Colour);
+                                PrintSomething((int)x, (int)y + 1, Colour);
+                            }
+                            y -= (-gradient);
+                        }
+                    }
+
+
+                }
+            }
         }
     }
 }
