@@ -80,7 +80,11 @@ namespace SnakesAndLadders
     }
     class Program
     {
+<<<<<<< HEAD
+        private static readonly string currentplayer;
+=======
         static Square[] Squares = LoadBoard();
+>>>>>>> e2cbb4afff623778d7e415b9d35a896ff3a4c293
 
         static void Main(string[] args)
         {
@@ -206,12 +210,26 @@ namespace SnakesAndLadders
             Squares[99].Type = "W";
             return Squares;
         }
+        static void Applyrules(int position, int length)
+        {
+            Square currentsquare = Squares[player.postition];
+            if (currentsquare.Type == "s")
+            {
+                currentsquare += currentsquare.action;
+            }
+            if (currentsquare.Type == "l")
+            {
+                currentsquare += currentsquare.action;
+            }
+            if (currentsquare.Type == "w")
+            {
+                string winplayer = currentplayer;
+            }
+        }
 
         static void ApplyRules(Player CurrentPlayer)
         {
             Square CurrentSquare = Squares[CurrentPlayer.Position];
-            
-            }
         }
 
         static int GetDieValue()
