@@ -11,11 +11,13 @@ namespace SnakesAndLadders
     {
         protected string name;
         protected string colour;
+        protected int position;
 
         public Player(string _name, string _colour)
         {
             this.name = _name;
             this.colour = _colour;
+            this.position = 0;
         }
 
         public string Name
@@ -29,9 +31,15 @@ namespace SnakesAndLadders
             get { return this.colour; }
             set { this.colour = value; }
         }
+
+        public int Position
+        {
+            get { return this.position; }
+            set { this.position = value; }
+        }
     }
 
-    class Square
+    public class Square
     {
         protected string type;
         protected int action;
@@ -72,7 +80,7 @@ namespace SnakesAndLadders
     }
     class Program
     {
-        private static readonly string currentplayer;
+        static Square[] Squares = LoadBoard();
 
         static void Main(string[] args)
         {
@@ -199,20 +207,10 @@ namespace SnakesAndLadders
             return Squares;
         }
 
-        static void Applyrules(int position, int length)
+        static void ApplyRules(Player CurrentPlayer)
         {
-            Square currentsquare = Squares[player.postition];
-            if (currentsquare.Type == "s")
-            {
-                currentsquare += currentsquare.action;
-            }
-            if (currentsquare.Type == "l")
-            {
-                currentsquare += currentsquare.action;
-            }
-            if (currentsquare.Type == "w")
-            {
-                string winplayer = currentplayer;
+            Square CurrentSquare = Squares[CurrentPlayer.Position];
+            
             }
         }
 
