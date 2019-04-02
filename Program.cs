@@ -84,8 +84,7 @@ namespace SnakesAndLadders
     {
 
          static void Main(string[] args)
-        {
-
+        {            
             int numOfPlayers = 0;
             bool win;
             Player[] players = CollectData(ref numOfPlayers);
