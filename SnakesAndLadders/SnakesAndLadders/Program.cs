@@ -87,6 +87,7 @@ namespace SnakesAndLadders
         {
             Player[] players = CollectData();
             Square[] Squares = SetUpBoard();
+            
         }
         
         public static Player[] CollectData()
