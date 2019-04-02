@@ -282,7 +282,8 @@ namespace SnakesAndLadders
             return total;
         }
 
-                public static void DisplayBoard(Square[] Squares)
+                
+        public static void DisplayBoard(Square[] Squares)
         {
             Console.Clear();
             ConsoleColor BackgroundColour = Console.BackgroundColor;
