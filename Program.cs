@@ -26,19 +26,19 @@ namespace SnakesAndLadders
             get { return this.name; }
             set { this.name = value; }
         }
-        
+
         public int Pos
         {
             get { return this.pos; }
             set { this.pos = value; }
         }
-        
+
         public ConsoleColor? Colour
         {
             get { return this.colour; }
             set { this.colour = value; }
         }
-       
+
     }
 
     class Square
@@ -46,7 +46,7 @@ namespace SnakesAndLadders
         protected string type;
         protected int action;
         protected ConsoleColor? playerColour;
-        
+
         public string Type
         {
             get { return this.type; }
@@ -59,13 +59,13 @@ namespace SnakesAndLadders
                 else this.type = "N";
             }
         }
-            
+
         public int Action
         {
-            get {return this.action;}
-            set {this.action=value;}
+            get { return this.action; }
+            set { this.action = value; }
         }
-            
+
         public ConsoleColor? PlayerColour
         {
             get { return this.playerColour; }
@@ -82,7 +82,7 @@ namespace SnakesAndLadders
     class Program
     {
 
-         static void Main(string[] args)
+        static void Main(string[] args)
         {
 
             int numOfPlayers = 0;
@@ -90,58 +90,52 @@ namespace SnakesAndLadders
             Player[] players = CollectData(ref numOfPlayers);
             int[] plrpstn = new int[numOfPlayers];
             Square[] squares = LoadBoard();
-            win = TakePlayerTurn(numOfPlayers, players, squares);                       
+            ControlLoop(numOfPlayers, players, squares); //Returns win = true because someone has won the game
+
         }
 
-        public static void TakePlayerTurn(int numOfPlayers, Player[] players, Square[] squares)
+        public static bool ControlLoop(int numOfPlayers, Player[] players, Square[] squares)
         {
             bool win = false;
-            int tempPlayerRollVal = 0;  // ∴
-            string[] scoreboard = new string[numOfPlayers];
 
             do
             {
-                for (int i = 0; i < numOfPlayers; i++)
-                {
-                    tempPlayerRollVal = GetDieValue();
-                    Console.WriteLine($"{players[i].Name}, you have rolled a {tempPlayerRollVal}");
-                    //Determines new player position
-                    squares[players[i].Pos].PlayerColour = null;
-                    players[i].Pos = players[i].Pos + tempPlayerRollVal;
-                    //Player position is updated based on snake, ladder or nothing
-                    int length = squares[players[i].Pos].Action; // <===    May or may not be correct            
-                    players[i].Pos = players[i].Pos + length;
-                    //Re-colours square of the player
-                    squares[players[i].Pos].PlayerColour = players[i].Colour;
-                    //ApplyRules(players[i].Pos, length);
-                    Console.WriteLine($"Your current position is {players[i].Pos}");
-
-                    if (players[i].Pos >= 99)
-                    {
-                        Console.WriteLine($"{players[i].Name} has won the game!");
-                        scoreboard[0] = players[i].Name;
-                        win = true;
-                        break; //exit the for loop...mabye
-                    }
-
-                }
-
+                win = TakePlayerTurn(win);
             } while (win == false);
 
-            //for (int i = 1; i < length; i++)
-            //{
-            //    if (players[i].Pos > players[i+1].Pos)
-            //    {
-            //        scoreboard[i] = players[i].Name;
-            //    }
-            //    else
-            //    {
-            //        scoreboard[i] = players[i + 1].Name;
-            //    }
-            //}            
+            return win;
+        }
 
-            //return win;
-            
+        public static bool TakePlayerTurn(int numOfPlayers, Player[] players, Square[] squares, bool win)
+        {
+            int tempPlayerRollVal = 0;  // ∴
+
+            for (int i = 0; i < numOfPlayers; i++)
+            {
+                tempPlayerRollVal = GetDieValue();
+                Console.WriteLine($"{players[i].Name}, you have rolled a {tempPlayerRollVal}");
+                //Determines new player position
+                squares[players[i].Pos].PlayerColour = null;
+                players[i].Pos = players[i].Pos + tempPlayerRollVal;
+                //Player position is updated based on snake, ladder or nothing
+                int length = squares[players[i].Pos].Action; // <===    May or may not be correct            
+                players[i].Pos = players[i].Pos + length;
+                //Re-colours square of the player
+                squares[players[i].Pos].PlayerColour = players[i].Colour;
+                //ApplyRules(players[i].Pos, length);
+                Console.WriteLine($"Your current position is {players[i].Pos}");
+
+                if (players[i].Pos >= 99)
+                {
+                    Console.WriteLine($"{players[i].Name} has won the game!");
+                    win = true;
+                    break; //exit the for loop...mabye
+                }
+
+            }
+
+            return win;
+
         }
 
         public static void CollectData(ref int numOfPlayers)
@@ -205,9 +199,10 @@ namespace SnakesAndLadders
         static Square[] LoadBoard()
         {
             Square[] Squares = new Square[100];
-            
-            for(int i = 0; i < Squares.Length; i++){
-             Squares[i] = new Square();   
+
+            for (int i = 0; i < Squares.Length; i++)
+            {
+                Squares[i] = new Square();
             }
 
             Squares[3].Action = 10;
@@ -332,12 +327,12 @@ namespace SnakesAndLadders
             int total = roll1 + roll2;
             return total;
         }
-        
+
         public static void DisplayBoard(Square[] Squares)
         {
             Console.Clear();
             ConsoleColor BackgroundColour = Console.BackgroundColor;
-            
+
             //Loops through the rows
             for (int y = 0; y < 10; y++)
             {
@@ -499,9 +494,9 @@ namespace SnakesAndLadders
 
         public static void PrintLadders(Square[] Squares)
         {
-            for(int i = 0; i < Squares.Length; i++)
+            for (int i = 0; i < Squares.Length; i++)
             {
-                if(Squares[i].Type == "L")
+                if (Squares[i].Type == "L")
                 {
                     int startingPointX;
                     int startingPointY;
@@ -517,7 +512,7 @@ namespace SnakesAndLadders
                     }
                     else
                     {
-                        startingPointX = ((9-(i % 10)) * 10) + 6;
+                        startingPointX = ((9 - (i % 10)) * 10) + 6;
                         startingPointY = ((10 - (i / 10)) * 3) - 2;
                     }
 
@@ -572,7 +567,7 @@ namespace SnakesAndLadders
                             y -= (gradient);
                         }
                     }
-                    
+
 
                 }
             }
@@ -604,7 +599,7 @@ namespace SnakesAndLadders
                         //finds the current square
                         int temp = CalculateLocation(i, y);
 
-                        Console.SetCursorPosition(i, (y*3)+1);
+                        Console.SetCursorPosition(i, (y * 3) + 1);
 
                         //prints the square number
                         Console.Write(temp);
@@ -658,7 +653,7 @@ namespace SnakesAndLadders
                         for (int y = startingPointY; y <= endingPointY; y++)
                         {
                             ConsoleColor Colour;
-                            if(y % 2 == 0)
+                            if (y % 2 == 0)
                             {
                                 Colour = ConsoleColor.DarkRed;
                             }
@@ -670,7 +665,7 @@ namespace SnakesAndLadders
                             PrintSomething((int)x + 1, (int)y, Colour);
                         }
                     }
-                    else if(gradient < 0)
+                    else if (gradient < 0)
                     {
                         double y = startingPointY;
                         for (int x = startingPointX; x <= endingPointX; x++)
@@ -686,16 +681,16 @@ namespace SnakesAndLadders
                             }
                             PrintSomething((int)x, (int)y, Colour);
                             PrintSomething((int)x + 1, (int)y, Colour);
-                            if(gradient < -1)
+                            if (gradient < -1)
                             {
                                 PrintSomething((int)x + 1, (int)y + 1, Colour);
                                 PrintSomething((int)x, (int)y + 1, Colour);
                             }
                             y -= (gradient);
-                            
+
                         }
                     }
-                    else 
+                    else
                     {
                         double y = startingPointY;
                         for (int x = startingPointX; x >= endingPointX; x--)
