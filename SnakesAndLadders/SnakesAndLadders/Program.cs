@@ -97,7 +97,8 @@ namespace SnakesAndLadders
             int PlayerNum = 0;
             do
             {
-
+                Console.WriteLine("{0}, Press to roll the dice.", players[PlayerNum].Name);
+                Console.ReadKey();
                 TakePlayerTurn(players[PlayerNum], squares);
                 DisplayBoard(squares);
                 if (players[PlayerNum].Position < 99)
