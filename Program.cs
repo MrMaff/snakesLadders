@@ -50,12 +50,14 @@ namespace SnakesAndLadders
         public string Type
         {
             get {return this.type;}
-            set {
-            if((value=="S")||(value=="L")||(value=="N"))
+            set
             {
-                this.type=value;
+                if ((value == "S") || (value == "L") || (value == "N"))
+                {
+                    this.type = value;
+                }
+                else this.type = "N";
             }
-            else this.type="N";
         }
             
         public int Action
@@ -66,8 +68,9 @@ namespace SnakesAndLadders
             
         public ConsoleColor? PlayerColour
         {
-            get{return this.playerColour;}
-            set{this.playerColour=value;}
+            get { return this.playerColour; }
+            set { this.playerColour = value; }
+        }
 
         public Square()
         {
