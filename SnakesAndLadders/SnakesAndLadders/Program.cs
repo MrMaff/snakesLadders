@@ -79,9 +79,7 @@ namespace SnakesAndLadders
         }
     }
     class Program
-    {
-
-        static Dictionary<string, ConsoleColor?> colours = new Dictionary<string, ConsoleColor?>();
+    { 
        
         static Square[] Squares = LoadBoard();
 
