@@ -85,12 +85,31 @@ namespace SnakesAndLadders
        
         static Square[] Squares = LoadBoard();
 
+
+
+
+
+
+
+
         static void Main(string[] args)
         {
             int numOfPlayers = 0;
             Player[] players = CollectData(ref numOfPlayers);
+            Square[] Squares = SetUpBoard();
             int[] plrpstn = new int[5];
         }
+
+
+
+
+
+
+
+
+
+
+
 
         public static Player[] CollectData(ref int numOfPlayers)
         {
