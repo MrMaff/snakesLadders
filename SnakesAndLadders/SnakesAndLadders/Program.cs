@@ -81,7 +81,6 @@ namespace SnakesAndLadders
     class Program
     { 
        
-        static Square[] Squares = LoadBoard();
         
         static void Main(string[] args)
         {
