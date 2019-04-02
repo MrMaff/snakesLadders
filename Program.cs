@@ -50,12 +50,14 @@ namespace SnakesAndLadders
         public string Type
         {
             get {return this.type;}
-            set {
-            if((value=="S")||(value=="L")||(value=="N"))
+            set
             {
-                this.type=value;
+                if ((value == "S") || (value == "L") || (value == "N"))
+                {
+                    this.type = value;
+                }
+                else this.type = "N";
             }
-            else this.type="N";
         }
             
         public int Action
@@ -66,8 +68,9 @@ namespace SnakesAndLadders
             
         public ConsoleColor? PlayerColour
         {
-            get{return this.playerColour;}
-            set{this.playerColour=value;}
+            get { return this.playerColour; }
+            set { this.playerColour = value; }
+        }
 
         public Square()
         {
@@ -130,8 +133,10 @@ namespace SnakesAndLadders
 
         public static void CollectData(ref int numOfPlayers)
         {
+            //List of possible choices for colours.
             List<string> colourOptions = new List<string>(new string[] { "Red", "Green", "Blue", "Cyan", "Magenta" });
 
+            //Validation to make sure a number between 2 and 5 is entered.
             bool intCheck = false;
             while (intCheck == false)
             {
@@ -147,20 +152,20 @@ namespace SnakesAndLadders
                 }
             }
 
+            //Creates array of correct size for the number of players.
             Player[] players = new Player[numOfPlayers];
 
             //Collects names of players and colour chosen.
             for (int i = 0; i < players.Length; i++)
             {
-                Console.WriteLine("");
                 string currentName = "";
                 string currentColour = "";
 
-                Console.WriteLine("Player {0}, please enter your name: ", i + 1);
+                Console.WriteLine("Player {0}, please enter your name: ", i + 1); //Collects name of player.
                 currentName = Console.ReadLine();
 
                 bool colourCheck = false;
-                while (colourCheck == false)
+                while (colourCheck == false) //Check for what colour was chosen.
                 {
                     int colourChoice = 0;
                     Console.WriteLine("Which colour would you like to use?");
@@ -174,10 +179,10 @@ namespace SnakesAndLadders
                         Console.WriteLine("Invalid entry! Please try again!");
                     else
                     {
-                        currentColour = colourOptions[colourChoice - 1];
-                        colourOptions.RemoveAt(colourChoice - 1);
+                        currentColour = colourOptions[colourChoice - 1]; //Stores the colour chosen.
+                        colourOptions.RemoveAt(colourChoice - 1); //Removes chosen colour from possible list.
                     }
-                    players[i] = new Player(currentName, currentColour);
+                    players[i] = new Player(currentName, currentColour); //Creates new player using name and colour entered.
                 }
                 Console.ReadKey();
             }
