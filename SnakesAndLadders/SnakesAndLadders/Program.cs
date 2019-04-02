@@ -146,11 +146,11 @@ namespace SnakesAndLadders
 
         }
 
-        //changes player location
-        static void Move(int roll)
-        {
-            plrpstn[i] = plrpstn[i] + roll;
-        }
+        ////changes player location
+        //static void Move(int roll)
+        //{
+         //   plrpstn[i] = plrpstn[i] + roll;
+        //}
 
         static Square[] LoadBoard()
         {
@@ -211,7 +211,6 @@ namespace SnakesAndLadders
         {
             Square CurrentSquare = Squares[CurrentPlayer.Position];
             
-            }
         }
 
         static int GetDieValue()
