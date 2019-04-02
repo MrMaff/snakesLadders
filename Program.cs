@@ -49,13 +49,15 @@ namespace SnakesAndLadders
         
         public string Type
         {
-            get {return this.type;}
-            set {
-            if((value=="S")||(value=="L")||(value=="N"))
+            get { return this.type; }
+            set
             {
-                this.type=value;
+                if ((value == "S") || (value == "L") || (value == "N"))
+                {
+                    this.type = value;
+                }
+                else this.type = "N";
             }
-            else this.type="N";
         }
             
         public int Action
@@ -66,8 +68,9 @@ namespace SnakesAndLadders
             
         public ConsoleColor? PlayerColour
         {
-            get{return this.playerColour;}
-            set{this.playerColour=value;}
+            get { return this.playerColour; }
+            set { this.playerColour = value; }
+        }
 
         public Square()
         {
@@ -87,14 +90,14 @@ namespace SnakesAndLadders
             Player[] players = CollectData(ref numOfPlayers);
             int[] plrpstn = new int[numOfPlayers];
             Square[] squares = LoadBoard();
-            win = TakePlayerTurn(numOfPlayers, players, squares);
-
+            win = TakePlayerTurn(numOfPlayers, players, squares);                       
         }
 
-        public static bool TakePlayerTurn(int numOfPlayers, Player[] players, Square[] squares)
+        public static void TakePlayerTurn(int numOfPlayers, Player[] players, Square[] squares)
         {
             bool win = false;
             int tempPlayerRollVal = 0;  // ∴
+            string[] scoreboard = new string[numOfPlayers];
 
             do
             {
@@ -116,6 +119,7 @@ namespace SnakesAndLadders
                     if (players[i].Pos >= 99)
                     {
                         Console.WriteLine($"{players[i].Name} has won the game!");
+                        scoreboard[0] = players[i].Name;
                         win = true;
                         break; //exit the for loop...mabye
                     }
@@ -124,7 +128,19 @@ namespace SnakesAndLadders
 
             } while (win == false);
 
-            return win;
+            //for (int i = 1; i < length; i++)
+            //{
+            //    if (players[i].Pos > players[i+1].Pos)
+            //    {
+            //        scoreboard[i] = players[i].Name;
+            //    }
+            //    else
+            //    {
+            //        scoreboard[i] = players[i + 1].Name;
+            //    }
+            //}            
+
+            //return win;
             
         }
 
@@ -317,7 +333,7 @@ namespace SnakesAndLadders
             return total;
         }
         
-                        public static void DisplayBoard(Square[] Squares)
+        public static void DisplayBoard(Square[] Squares)
         {
             Console.Clear();
             ConsoleColor BackgroundColour = Console.BackgroundColor;
