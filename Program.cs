@@ -779,5 +779,12 @@ namespace SnakesAndLadders
                 }
             }
         }
+
+        public static Square[] SetUpBoard()
+        {
+            Square[] squares = LoadBoard();
+            DisplayBoard(squares);
+            return squares;
+        }
     }
 }
