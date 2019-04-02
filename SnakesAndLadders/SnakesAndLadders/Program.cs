@@ -11,11 +11,13 @@ namespace SnakesAndLadders
     {
         protected string name;
         protected string colour;
+        protected int position;
 
         public Player(string _name, string _colour)
         {
             this.name = _name;
             this.colour = _colour;
+            this.position = 0;
         }
 
         public string Name
@@ -29,9 +31,15 @@ namespace SnakesAndLadders
             get { return this.colour; }
             set { this.colour = value; }
         }
+
+        public int Position
+        {
+            get { return this.position; }
+            set { this.position = value; }
+        }
     }
 
-    class Square
+    public class Square
     {
         protected string type;
         protected int action;
@@ -199,22 +207,22 @@ namespace SnakesAndLadders
             return Squares;
         }
 
-        //static void ApplyRules(int position, int length)
-        //{
-        //    Square currentsquare = squares[plrpstn[0]];
-        //    if (currentsquare.Type == "S") ;
-        //    {
-        //        position = position - length;
-        //    }
-        //    if (currentsquare.Type == "L")
-        //    {
-        //        position = position + length;
-        //    }
-        //    if (currentsquare.Type == "W")
-        //    {
-        //        string winplayer = currentplayer;
-        //    }
-        //}
+        static void applyrules(Player CurrentPlayer)
+        {
+            Square currentsquare = Squares[CurrentPlayer.Position];
+            if (currentsquare.type == "s")
+            {
+                currentsquare += currentsquare.Action;
+            };
+            if (currentsquare.type == "l")
+            {
+                currentsquare += currentsquare.Action;
+            };
+            if (currentsquare.type == "w")
+            {
+                string winplayer = currentplayer;
+            }
+        }
 
         static int GetDieValue()
         {
