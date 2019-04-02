@@ -85,8 +85,8 @@ namespace SnakesAndLadders
         static void Main(string[] args)
         {
             Player[] players = CollectData();
-            Square[] Squares = SetUpBoard();            
-
+            Square[] squares = SetUpBoard();
+            PlayGame(players, squares);
             Console.ReadKey();
         }
         
@@ -193,6 +193,10 @@ namespace SnakesAndLadders
         {
             int pos1 = player.Position;
             player.Position += roll;
+            if (player.Position > 99)
+            {
+                player.Position = 99;
+            }
             int pos2 = player.Position;
             squares[pos1].PlayerColour = null;
             squares[pos2].PlayerColour = player.Colour;
