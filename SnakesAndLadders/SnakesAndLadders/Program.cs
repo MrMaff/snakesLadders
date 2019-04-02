@@ -11,7 +11,6 @@ namespace SnakesAndLadders
     {
         protected string name;
         protected string colour;
-        protected int position;
 
         public Player(string _name, string _colour)
         {
@@ -29,12 +28,6 @@ namespace SnakesAndLadders
         {
             get { return this.colour; }
             set { this.colour = value; }
-        }
-
-        public int Position
-        {
-            get { return this.position; }
-            set { this.position = value; }
         }
     }
 
@@ -146,10 +139,10 @@ namespace SnakesAndLadders
         }
 
         //changes player location
-        static void Move(Player player, int roll)
+        static void Move(int place, int roll)
         {
-            player.Position += roll;
-
+            int dieroll = 0;
+            place = place + roll;
         }
 
         static Square[] LoadBoard()
