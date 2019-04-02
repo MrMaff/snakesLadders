@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SnakesAndLadders
 {
-    //test
+    //alex test
     class Player
     {
         protected string name;
@@ -84,8 +84,7 @@ namespace SnakesAndLadders
     {
 
          static void Main(string[] args)
-        {
-
+        {            
             int numOfPlayers = 0;
             bool win;
             Player[] players = CollectData(ref numOfPlayers);

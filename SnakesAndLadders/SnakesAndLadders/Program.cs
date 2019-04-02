@@ -10,10 +10,10 @@ namespace SnakesAndLadders
     class Player
     {
         protected string name;
-        protected string colour;
+        protected ConsoleColor colour;
         protected int position;
 
-        public Player(string _name, string _colour)
+        public Player(string _name, ConsoleColor _colour)
         {
             this.name = _name;
             this.colour = _colour;
@@ -26,7 +26,7 @@ namespace SnakesAndLadders
             set { this.name = value; }
         }
 
-        public string Colour
+        public ConsoleColor Colour
         {
             get { return this.colour; }
             set { this.colour = value; }
@@ -80,28 +80,21 @@ namespace SnakesAndLadders
     }
     class Program
     { 
+       
+        static Square[] Squares = LoadBoard();
+        
         static void Main(string[] args)
         {
-            int numOfPlayers = 0;
-            Player[] players = CollectData(ref numOfPlayers);
+            Player[] players = CollectData();
             Square[] Squares = SetUpBoard();
-            int[] plrpstn = new int[5];
+
+            Console.ReadKey();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-        public static Player[] CollectData(ref int numOfPlayers)
+        
+        public static Player[] CollectData()
         {
-            List<string> colourOptions = new List<string>(new string[] { "Red", "Green", "Blue", "Cyan", "Magenta" });
+            int numOfPlayers = 0;
+            List<ConsoleColor?> colourOptions = new List<ConsoleColor?>(new ConsoleColor?[] { ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Blue, ConsoleColor.Cyan, ConsoleColor.Magenta });
 
             bool intCheck = false;
             while (intCheck == false)
@@ -125,7 +118,7 @@ namespace SnakesAndLadders
             {
                 Console.WriteLine("");
                 string currentName = "";
-                string currentColour = "";
+                ConsoleColor? currentColour = null;
 
                 Console.WriteLine("Player {0}, please enter your name: ", i + 1);
                 currentName = Console.ReadLine();
@@ -148,9 +141,8 @@ namespace SnakesAndLadders
                         currentColour = colourOptions[colourChoice - 1];
                         colourOptions.RemoveAt(colourChoice - 1);
                     }
-                    players[i] = new Player(currentName, currentColour);
-                }
-                Console.ReadKey();
+                    players[i] = new Player(currentName, (ConsoleColor)currentColour);
+                }                
             }
 
             return players;
@@ -226,8 +218,6 @@ namespace SnakesAndLadders
         {
             Square CurrentSquare = Squares[CurrentPlayer.Position];
             Move(CurrentPlayer, CurrentSquare.Action);
-            
-            
         }
 
         static int GetDieValue()
@@ -290,8 +280,8 @@ namespace SnakesAndLadders
             int total = roll1 + roll2;
             return total;
         }
-
-                public static void DisplayBoard(Square[] Squares)
+                
+        public static void DisplayBoard(Square[] Squares)
         {
             Console.Clear();
             ConsoleColor BackgroundColour = Console.BackgroundColor;
