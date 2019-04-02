@@ -139,10 +139,9 @@ namespace SnakesAndLadders
         }
 
         //changes player location
-        static void Move(int place, int roll)
+        static void Move(int roll)
         {
-            int dieroll = 0;
-            place = place + roll;
+            plrpstn[i] = plrpstn[i] + roll;
         }
 
         static Square[] LoadBoard()
@@ -234,6 +233,7 @@ namespace SnakesAndLadders
 
             //Checks if values the same. If so, returns bool true
             doubleTurn = Double(roll1, roll2);
+            
 
             //Adds total of two rolls
             total = CalculateTotal(roll1, roll2) + total;

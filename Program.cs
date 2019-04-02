@@ -49,7 +49,7 @@ namespace SnakesAndLadders
         
         public string Type
         {
-            get { return this.type; }
+            get {return this.type;}
             set
             {
                 if ((value == "S") || (value == "L") || (value == "N"))
@@ -59,7 +59,6 @@ namespace SnakesAndLadders
                 else this.type = "N";
             }
         }
-
             
         public int Action
         {
@@ -84,14 +83,16 @@ namespace SnakesAndLadders
     {
 
          static void Main(string[] args)
-         {
+        {
+
             int numOfPlayers = 0;
             bool win;
             Player[] players = CollectData(ref numOfPlayers);
             int[] plrpstn = new int[numOfPlayers];
             Square[] squares = LoadBoard();
             win = TakePlayerTurn(numOfPlayers, players, squares);
-         }
+
+        }
 
         public static bool TakePlayerTurn(int numOfPlayers, Player[] players, Square[] squares)
         {
@@ -141,9 +142,7 @@ namespace SnakesAndLadders
                 intCheck = int.TryParse(Console.ReadLine(), out numOfPlayers);
 
                 if (numOfPlayers < 2 || numOfPlayers > 5)
-                {
                     intCheck = false;
-                }
 
                 if (intCheck == false)
                 {
@@ -194,9 +193,8 @@ namespace SnakesAndLadders
         {
             Square[] Squares = new Square[100];
             
-            for(int i = 0; i < Squares.Length; i++)
-            {
-                Squares[i] = new Square();   
+            for(int i = 0; i < Squares.Length; i++){
+             Squares[i] = new Square();   
             }
 
             Squares[3].Action = 10;
@@ -322,7 +320,7 @@ namespace SnakesAndLadders
             return total;
         }
         
-        public static void DisplayBoard(Square[] Squares)
+                        public static void DisplayBoard(Square[] Squares)
         {
             Console.Clear();
             ConsoleColor BackgroundColour = Console.BackgroundColor;
@@ -476,6 +474,7 @@ namespace SnakesAndLadders
 
         public static int CalculateLocation(int i, int y)
         {
+
             //complicated maths
             int temp = (((i - (i % 10)) / 10) + 1);
             int temp2 = temp;
