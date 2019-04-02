@@ -17,7 +17,7 @@ namespace SnakesAndLadders
         {
             this.name = _name;
             this.colour = _colour;
-            this.position = 0;
+            this.Position = 0;
         }
 
         public string Name
@@ -111,18 +111,18 @@ namespace SnakesAndLadders
             {
                 tempPlayerRollVal = GetDieValue();
                 Console.WriteLine($"{players[i].Name}, you have rolled a {tempPlayerRollVal}");
-                //Determines new player position
-                squares[players[i].Pos].PlayerColour = null;
-                players[i].Pos = players[i].Pos + tempPlayerRollVal;
-                //Player position is updated based on snake, ladder or nothing
-                int length = squares[players[i].Pos].Action; // <===    May or may not be correct            
-                players[i].Pos = players[i].Pos + length;
+                //Determines new player.Position
+                squares[players[i].Position].PlayerColour = null;
+                players[i].Position = players[i].Position + tempPlayerRollVal;
+                //Player.Position is updated based on snake, ladder or nothing
+                int length = squares[players[i].Position].Action; // <===    May or may not be correct            
+                players[i].Position = players[i].Position + length;
                 //Re-colours square of the player
-                squares[players[i].Pos].PlayerColour = players[i].Colour;
-                //ApplyRules(players[i].Pos, length);
-                Console.WriteLine($"Your current position is {players[i].Pos}");
+                squares[players[i].Position].PlayerColour = players[i].Colour;
+                //ApplyRules(players[i].Position, length);
+                Console.WriteLine($"Your current.Position is {players[i].Position}");
 
-                if (players[i].Pos >= 99)
+                if (players[i].Position >= 99)
                 {
                     Console.WriteLine($"{players[i].Name} has won the game!");
                     win = true;
@@ -196,11 +196,11 @@ namespace SnakesAndLadders
         //changes player location
         static void Move(Player player, int roll)
         {
-            int pos1 = player.Position;
+            int.Position1 = player.Position;
             player.Position += roll;
-            int pos2 = player.Position;
-            Squares[pos1].PlayerColour = null;
-            Squares[pos2].PlayerColour = player.Colour;
+            int.Position2 = player.Position;
+            Squares.Position1].PlayerColour = null;
+            Squares.Position2].PlayerColour = player.Colour;
         }
 
         static Square[] LoadBoard()
@@ -594,7 +594,7 @@ namespace SnakesAndLadders
             }
         }
 
-        //prints a block character to the screen at the given position in the given colour
+        //prints a block character to the screen at the given.Position in the given colour
         public static void PrintSomething(int x, int y, ConsoleColor Colour = ConsoleColor.Magenta)
         {
             Console.SetCursorPosition(x, y);
@@ -621,7 +621,7 @@ namespace SnakesAndLadders
                         //finds the current square
                         int temp = CalculateLocation(i, y);
 
-                        //goes to the cursor position
+                        //goes to the cursor.Position
                         Console.SetCursorPosition(i, (y * 3) + 1);
 
                         //prints the square number
@@ -679,7 +679,7 @@ namespace SnakesAndLadders
                     //checks to see if its going straight down
                     if (gradient == double.NegativeInfinity)
                     {
-                        //sets the x position
+                        //sets the x.Position
                         double x = startingPointX;
 
                         //Loops through all the relevant y values
