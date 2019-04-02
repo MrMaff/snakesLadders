@@ -149,7 +149,11 @@ namespace SnakesAndLadders
         //changes player location
         static void Move(Player player, int roll)
         {
-           
+            int pos1 = player.Position;
+            player.Position += roll;
+            int pos2 = player.Position;
+            Squares[pos1].PlayerColour = null;
+            Squares[pos2].PlayerColour = player.Colour;
         }
 
         static Square[] LoadBoard()
