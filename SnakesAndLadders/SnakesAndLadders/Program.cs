@@ -72,7 +72,7 @@ namespace SnakesAndLadders
     }
     class Program
     {
-
+        private static readonly string currentplayer;
 
         static void Main(string[] args)
         {
@@ -199,18 +199,18 @@ namespace SnakesAndLadders
             return Squares;
         }
 
-        static void applyrules(int position, int length)
+        static void Applyrules(int position, int length)
         {
             Square currentsquare = Squares[player.postition];
-            if (currentsquare.type == "s")
+            if (currentsquare.Type == "s")
             {
-                currentsquare += currentsquare.action
-            };
-            if (currentsquare.type == "l")
+                currentsquare += currentsquare.action;
+            }
+            if (currentsquare.Type == "l")
             {
-                currentsquare += currentsquare.action
-            };
-            if (currentsquare.type == "w")
+                currentsquare += currentsquare.action;
+            }
+            if (currentsquare.Type == "w")
             {
                 string winplayer = currentplayer;
             }
