@@ -204,11 +204,11 @@ namespace SnakesAndLadders
             Square currentsquare = Squares[player.postition];
             if (currentsquare.type == "s")
             {
-                currentsquare += currentsquare.action
+                currentsquare += currentsquare.action;
             };
             if (currentsquare.type == "l")
             {
-                currentsquare += currentsquare.action
+                currentsquare += currentsquare.action;
             };
             if (currentsquare.type == "w")
             {
