@@ -140,8 +140,7 @@ namespace SnakesAndLadders
                         colourOptions.RemoveAt(colourChoice - 1);
                     }
                     players[i] = new Player(currentName, currentColour);
-                }
-                Console.ReadKey();
+                }                
             }
 
             return players;
