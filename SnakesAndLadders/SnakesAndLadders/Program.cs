@@ -207,20 +207,10 @@ namespace SnakesAndLadders
             return Squares;
         }
 
-        static void applyrules(Player CurrentPlayer)
+        static void ApplyRules(Player CurrentPlayer)
         {
-            Square currentsquare = Squares[CurrentPlayer.Position];
-            if (currentsquare.type == "s")
-            {
-                currentsquare += currentsquare.Action;
-            };
-            if (currentsquare.type == "l")
-            {
-                currentsquare += currentsquare.Action;
-            };
-            if (currentsquare.type == "w")
-            {
-                string winplayer = currentplayer;
+            Square CurrentSquare = Squares[CurrentPlayer.Position];
+            
             }
         }
 
