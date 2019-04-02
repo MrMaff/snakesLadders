@@ -428,9 +428,9 @@ namespace SnakesAndLadders
 
 
 
-            PrintSnakes(Squares);
-            PrintLadders(Squares);
-            JustText(Squares);
+            //PrintSnakes(Squares);
+            //PrintLadders(Squares);
+            //JustText(Squares);
         }
 
         public static int CalculateLocation(int i, int y)
