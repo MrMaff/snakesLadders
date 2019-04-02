@@ -87,7 +87,8 @@ namespace SnakesAndLadders
         {
             Player[] players = CollectData();
             Square[] Squares = SetUpBoard();
-            
+
+            Console.ReadKey();
         }
         
         public static Player[] CollectData()
@@ -217,8 +218,6 @@ namespace SnakesAndLadders
         {
             Square CurrentSquare = Squares[CurrentPlayer.Position];
             Move(CurrentPlayer, CurrentSquare.Action);
-            
-            
         }
 
         static int GetDieValue()
@@ -281,7 +280,6 @@ namespace SnakesAndLadders
             int total = roll1 + roll2;
             return total;
         }
-
                 
         public static void DisplayBoard(Square[] Squares)
         {
@@ -430,9 +428,9 @@ namespace SnakesAndLadders
 
 
 
-            //PrintSnakes(Squares);
-            //PrintLadders(Squares);
-            //JustText(Squares);
+            PrintSnakes(Squares);
+            PrintLadders(Squares);
+            JustText(Squares);
         }
 
         public static int CalculateLocation(int i, int y)
