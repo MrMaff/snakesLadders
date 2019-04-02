@@ -85,11 +85,11 @@ namespace SnakesAndLadders
         static void Main(string[] args)
         {
             int numOfPlayers = 0;
-            CollectData(ref numOfPlayers);
+            Player[] players = CollectData(ref numOfPlayers);
             int[] plrpstn = new int[5];
         }
 
-        public static void CollectData(ref int numOfPlayers)
+        public static Player[] CollectData(ref int numOfPlayers)
         {
             List<string> colourOptions = new List<string>(new string[] { "Red", "Green", "Blue", "Cyan", "Magenta" });
 
@@ -143,6 +143,7 @@ namespace SnakesAndLadders
                 Console.ReadKey();
             }
 
+            return players;
 
         }
 
@@ -216,7 +217,7 @@ namespace SnakesAndLadders
             Square CurrentSquare = Squares[CurrentPlayer.Position];
             Move(CurrentPlayer, CurrentSquare.Action);
             
-            }
+            
         }
 
         static int GetDieValue()
