@@ -85,7 +85,7 @@ namespace SnakesAndLadders
         
         static void Main(string[] args)
         {
-            Player[] players = CollectData(ref numOfPlayers);
+            Player[] players = CollectData();
             Square[] Squares = SetUpBoard();
         }
         
