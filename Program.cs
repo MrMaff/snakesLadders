@@ -184,7 +184,7 @@ namespace SnakesAndLadders
                     }
                     players[i] = new Player(currentName, currentColour); //Creates new player using name and colour entered.
                 }
-                Console.ReadKey();
+                Console.Clear();
             }
 
 
