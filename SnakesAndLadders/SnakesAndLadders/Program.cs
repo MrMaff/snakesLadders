@@ -79,9 +79,7 @@ namespace SnakesAndLadders
         }
     }
     class Program
-    {
-
-        static Dictionary<string, ConsoleColor?> colours = new Dictionary<string, ConsoleColor?>();
+    { 
        
         static Square[] Squares = LoadBoard();
         
@@ -158,7 +156,7 @@ namespace SnakesAndLadders
             player.Position += roll;
             int pos2 = player.Position;
             Squares[pos1].PlayerColour = null;
-            Squares[pos2].PlayerColour = player.Colour;
+            //Squares[pos2].PlayerColour = player.Colour;
         }
 
         static Square[] LoadBoard()
