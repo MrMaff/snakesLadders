@@ -79,36 +79,16 @@ namespace SnakesAndLadders
         }
     }
     class Program
-    {
-
-        static Dictionary<string, ConsoleColor?> colours = new Dictionary<string, ConsoleColor?>();
+    { 
        
         static Square[] Squares = LoadBoard();
-
-
-
-
-
-
-
-
+        
         static void Main(string[] args)
         {
             Player[] players = CollectData(ref numOfPlayers);
             Square[] Squares = SetUpBoard();
         }
-
-
-
-
-
-
-
-
-
-
-
-
+        
         public static Player[] CollectData(ref int numOfPlayers)
         {
             List<string> colourOptions = new List<string>(new string[] { "Red", "Green", "Blue", "Cyan", "Magenta" });
