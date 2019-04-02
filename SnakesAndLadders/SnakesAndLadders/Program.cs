@@ -85,14 +85,13 @@ namespace SnakesAndLadders
         
         static void Main(string[] args)
         {
-            int numOfPlayers = 0;
-            Player[] players = CollectData(ref numOfPlayers);
+            Player[] players = CollectData();
             Square[] Squares = SetUpBoard();
-            int[] plrpstn = new int[5];
         }
         
-        public static Player[] CollectData(ref int numOfPlayers)
+        public static Player[] CollectData()
         {
+            int numOfPlayers;
             List<string> colourOptions = new List<string>(new string[] { "Red", "Green", "Blue", "Cyan", "Magenta" });
 
             bool intCheck = false;
