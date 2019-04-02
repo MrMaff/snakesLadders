@@ -195,8 +195,6 @@ namespace SnakesAndLadders
                 }
                 Console.Clear();
             }
-
-
         }
 
 
@@ -340,6 +338,7 @@ namespace SnakesAndLadders
             //Loops through the rows
             for (int y = 0; y < 10; y++)
             {
+                //goes through the top of a row
                 //goes through the top of a row
                 for (int i = 0; i <= 100; i++)
                 {
