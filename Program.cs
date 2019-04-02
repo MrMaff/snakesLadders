@@ -375,7 +375,7 @@ namespace SnakesAndLadders
 
                         //prints the square number
                         Console.Write(temp);
-
+                        
                         //accounts for any extra characters
                         i += temp.ToString().Length - 1;
                     }
