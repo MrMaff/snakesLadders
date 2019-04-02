@@ -199,22 +199,22 @@ namespace SnakesAndLadders
             return Squares;
         }
 
-        //static void ApplyRules(int position, int length)
-        //{
-        //    Square currentsquare = squares[plrpstn[0]];
-        //    if (currentsquare.Type == "S") ;
-        //    {
-        //        position = position - length;
-        //    }
-        //    if (currentsquare.Type == "L")
-        //    {
-        //        position = position + length;
-        //    }
-        //    if (currentsquare.Type == "W")
-        //    {
-        //        string winplayer = currentplayer;
-        //    }
-        //}
+        static void applyrules(int position, int length)
+        {
+            Square currentsquare = Squares[player.postition];
+            if (currentsquare.type == "s")
+            {
+                currentsquare += currentsquare.action
+            };
+            if (currentsquare.type == "l")
+            {
+                currentsquare += currentsquare.action
+            };
+            if (currentsquare.type == "w")
+            {
+                string winplayer = currentplayer;
+            }
+        }
 
         static int GetDieValue()
         {
