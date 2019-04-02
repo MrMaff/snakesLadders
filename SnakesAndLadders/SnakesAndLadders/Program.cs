@@ -212,7 +212,7 @@ namespace SnakesAndLadders
             Square CurrentSquare = Squares[CurrentPlayer.Position];
             Move(CurrentPlayer, CurrentSquare.Action);
             
-            }
+            
         }
 
         static int GetDieValue()
