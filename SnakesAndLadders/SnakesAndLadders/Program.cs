@@ -139,9 +139,9 @@ namespace SnakesAndLadders
         }
 
         //changes player location
-        static void Move(int roll)
+        static void Move(int total)
         {
-            plrpstn[i] = plrpstn[i] + roll;
+            currentplayer.Position += total;
         }
 
         static Square[] LoadBoard()
