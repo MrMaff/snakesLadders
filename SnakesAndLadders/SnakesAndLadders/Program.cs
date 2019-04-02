@@ -10,10 +10,10 @@ namespace SnakesAndLadders
     class Player
     {
         protected string name;
-        protected string colour;
+        protected ConsoleColor colour;
         protected int position;
 
-        public Player(string _name, string _colour)
+        public Player(string _name, ConsoleColor _colour)
         {
             this.name = _name;
             this.colour = _colour;
@@ -26,7 +26,7 @@ namespace SnakesAndLadders
             set { this.name = value; }
         }
 
-        public string Colour
+        public ConsoleColor Colour
         {
             get { return this.colour; }
             set { this.colour = value; }
@@ -94,7 +94,7 @@ namespace SnakesAndLadders
         public static Player[] CollectData()
         {
             int numOfPlayers = 0;
-            List<string> colourOptions = new List<string>(new string[] { "Red", "Green", "Blue", "Cyan", "Magenta" });
+            List<ConsoleColor?> colourOptions = new List<ConsoleColor?>(new ConsoleColor?[] { ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Blue, ConsoleColor.Cyan, ConsoleColor.Magenta });
 
             bool intCheck = false;
             while (intCheck == false)
@@ -118,7 +118,7 @@ namespace SnakesAndLadders
             {
                 Console.WriteLine("");
                 string currentName = "";
-                string currentColour = "";
+                ConsoleColor? currentColour = null;
 
                 Console.WriteLine("Player {0}, please enter your name: ", i + 1);
                 currentName = Console.ReadLine();
@@ -141,7 +141,7 @@ namespace SnakesAndLadders
                         currentColour = colourOptions[colourChoice - 1];
                         colourOptions.RemoveAt(colourChoice - 1);
                     }
-                    players[i] = new Player(currentName, currentColour);
+                    players[i] = new Player(currentName, (ConsoleColor)currentColour);
                 }                
             }
 
