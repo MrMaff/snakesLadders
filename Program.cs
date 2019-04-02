@@ -316,8 +316,9 @@ namespace SnakesAndLadders
             int total = roll1 + roll2;
             return total;
         }
-        
-                        public static void DisplayBoard(Square[] Squares)
+
+
+        public static void DisplayBoard(Square[] Squares)
         {
             Console.Clear();
             ConsoleColor BackgroundColour = Console.BackgroundColor;
@@ -483,8 +484,10 @@ namespace SnakesAndLadders
 
         public static void PrintLadders(Square[] Squares)
         {
+            //goes through all of the squares
             for(int i = 0; i < Squares.Length; i++)
             {
+                //checks to see if it found a ladder
                 if(Squares[i].Type == "L")
                 {
                     int startingPointX;
@@ -494,65 +497,87 @@ namespace SnakesAndLadders
                     int newLocation = i + Squares[i].Action;
                     double gradient;
 
+                    //checks to see wether or not it is on an odd line
                     if ((i / 10) % 2 == 0)
                     {
+                        //Finds the starting location
                         startingPointX = (((i % 10)) * 10) + 6;
                         startingPointY = ((10 - (i / 10)) * 3) - 2;
-                    }
-                    else
-                    {
-                        startingPointX = ((9-(i % 10)) * 10) + 6;
-                        startingPointY = ((10 - (i / 10)) * 3) - 2;
-                    }
 
-                    if ((newLocation / 10) % 2 == 0)
-                    {
+                        //finds the finishing location
                         endingPointX = (((newLocation % 10)) * 10) + 6;
                         endingPointY = ((10 - (newLocation / 10)) * 3) - 2;
                     }
                     else
                     {
+                        //Finds the starting location
+                        startingPointX = ((9-(i % 10)) * 10) + 6;
+                        startingPointY = ((10 - (i / 10)) * 3) - 2;
+
+                        //finds the finishing location
                         endingPointX = ((9 - (newLocation % 10)) * 10) + 6;
                         endingPointY = ((10 - (newLocation / 10)) * 3) - 2;
                     }
 
+                    //finds out what the gradient is
                     gradient = (double)(startingPointY - endingPointY) / (double)(endingPointX - startingPointX);
+
+                    //checks to see if it is going straight up
                     if (gradient == double.PositiveInfinity)
                     {
+                        //stores the starting point
                         double x = startingPointX;
+
+                        //loops through all the vertical values
                         for (int y = startingPointY; y >= endingPointY; y--)
                         {
+                            //prints to that location
                             PrintSomething((int)x, (int)y);
                             PrintSomething((int)x + 1, (int)y);
                         }
-                    }
+                    }//checks for a negative gradient
                     else if (gradient < 0)
                     {
+                        //stores the y starting point
                         double y = startingPointY;
+
+                        //loops through all the x values
                         for (int x = startingPointX; x >= endingPointX; x--)
                         {
+                            //prints something to the screen
                             PrintSomething((int)x, (int)y);
                             PrintSomething((int)x + 1, (int)y);
+
+                            //checks to see if the gradient is even steeper
                             if (gradient < -1)
                             {
                                 PrintSomething((int)x + 1, (int)y + 1);
                                 PrintSomething((int)x, (int)y + 1);
                             }
+                            //adjusts the y value
                             y -= (-gradient);
                         }
                     }
                     else
                     {
+                        //sets the starting point
                         double y = startingPointY;
+
+                        //loops through the x value
                         for (int x = startingPointX; x <= endingPointX; x++)
                         {
+                            //prints the thing to the screen
                             PrintSomething((int)x, (int)y);
                             PrintSomething((int)x + 1, (int)y);
+
+                            //checks to see if it needs to print more to the screen
                             if (gradient > 1)
                             {
                                 PrintSomething((int)x + 1, (int)y + 1);
                                 PrintSomething((int)x, (int)y + 1);
                             }
+
+                            //adjusts y by the gradient
                             y -= (gradient);
                         }
                     }
@@ -562,6 +587,7 @@ namespace SnakesAndLadders
             }
         }
 
+        //prints a block character to the screen at the given position in the given colour
         public static void PrintSomething(int x, int y, ConsoleColor Colour = ConsoleColor.Magenta)
         {
             Console.SetCursorPosition(x, y);
@@ -588,6 +614,7 @@ namespace SnakesAndLadders
                         //finds the current square
                         int temp = CalculateLocation(i, y);
 
+                        //goes to the cursor position
                         Console.SetCursorPosition(i, (y*3)+1);
 
                         //prints the square number
@@ -600,12 +627,16 @@ namespace SnakesAndLadders
             }
         }
 
+        //prints the snakes to the screen
         public static void PrintSnakes(Square[] Squares)
         {
+            //loops through all the squares
             for (int i = 0; i < Squares.Length; i++)
             {
+                //checks to see if it found a snake
                 if (Squares[i].Type == "S")
                 {
+                    //declares some variables
                     int startingPointX;
                     int startingPointY;
                     int endingPointX;
@@ -613,35 +644,44 @@ namespace SnakesAndLadders
                     int newLocation = i + Squares[i].Action;
                     double gradient;
 
+                    //checks to see if its on an odd or even square
                     if ((i / 10) % 2 == 0)
                     {
+                        //sets the starting locations
                         startingPointX = (((i % 10)) * 10) + 6;
                         startingPointY = ((10 - (i / 10)) * 3) - 2;
-                    }
-                    else
-                    {
-                        startingPointX = ((9 - (i % 10)) * 10) + 6;
-                        startingPointY = ((10 - (i / 10)) * 3) - 2;
-                    }
 
-                    if ((newLocation / 10) % 2 == 0)
-                    {
+                        //sets the ending locations
                         endingPointX = (((newLocation % 10)) * 10) + 6;
                         endingPointY = ((10 - (newLocation / 10)) * 3) - 2;
                     }
                     else
                     {
+                        //sets the starting locations
+                        startingPointX = ((9 - (i % 10)) * 10) + 6;
+                        startingPointY = ((10 - (i / 10)) * 3) - 2;
+
+                        //sets the ending locations
                         endingPointX = ((9 - (newLocation % 10)) * 10) + 6;
                         endingPointY = ((10 - (newLocation / 10)) * 3) - 2;
                     }
 
+                    //finds out the gradient between the points
                     gradient = (double)(startingPointY - endingPointY) / (double)(endingPointX - startingPointX);
+
+                    //checks to see if its going straight down
                     if (gradient == double.NegativeInfinity)
                     {
+                        //sets the x position
                         double x = startingPointX;
+
+                        //Loops through all the relevant y values
                         for (int y = startingPointY; y <= endingPointY; y++)
                         {
+                            //creates a variable to store the colour
                             ConsoleColor Colour;
+
+                            //alternates the colour
                             if(y % 2 == 0)
                             {
                                 Colour = ConsoleColor.DarkRed;
@@ -650,16 +690,24 @@ namespace SnakesAndLadders
                             {
                                 Colour = ConsoleColor.DarkYellow;
                             }
+
+                            //prints the blocks to the screen
                             PrintSomething((int)x, (int)y, Colour);
                             PrintSomething((int)x + 1, (int)y, Colour);
                         }
-                    }
+                    }//checks to see if it has a negative gradient
                     else if(gradient < 0)
                     {
+                        //stores the starting location
                         double y = startingPointY;
+
+                        //loops through all the locations
                         for (int x = startingPointX; x <= endingPointX; x++)
                         {
+                            //stores the colour
                             ConsoleColor Colour;
+
+                            //alternates the colour
                             if (x % 2 == 0)
                             {
                                 Colour = ConsoleColor.DarkRed;
@@ -668,23 +716,35 @@ namespace SnakesAndLadders
                             {
                                 Colour = ConsoleColor.DarkYellow;
                             }
+
+                            //prints that part to the screen
                             PrintSomething((int)x, (int)y, Colour);
                             PrintSomething((int)x + 1, (int)y, Colour);
+
+                            //if the gradient is even really steep it prints extra characters
                             if(gradient < -1)
                             {
                                 PrintSomething((int)x + 1, (int)y + 1, Colour);
                                 PrintSomething((int)x, (int)y + 1, Colour);
                             }
+
+                            //adjusts the y value by the gradient
                             y -= (gradient);
                             
                         }
                     }
                     else 
                     {
+                        //grabs the starting point
                         double y = startingPointY;
+
+                        //loops through all the x values
                         for (int x = startingPointX; x >= endingPointX; x--)
                         {
+                            //stores the colour
                             ConsoleColor Colour;
+
+                            //alternates the colour
                             if (x % 2 == 0)
                             {
                                 Colour = ConsoleColor.DarkRed;
@@ -693,13 +753,19 @@ namespace SnakesAndLadders
                             {
                                 Colour = ConsoleColor.DarkYellow;
                             }
+
+                            //prints this part to the screen
                             PrintSomething((int)x, (int)y, Colour);
                             PrintSomething((int)x + 1, (int)y, Colour);
+
+                            //prints extra characters if the gradient is steeper
                             if (gradient > 1)
                             {
                                 PrintSomething((int)x + 1, (int)y + 1, Colour);
                                 PrintSomething((int)x, (int)y + 1, Colour);
                             }
+
+                            //adjusts the y value by the gradient
                             y -= (-gradient);
                         }
                     }
