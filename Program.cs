@@ -91,7 +91,7 @@ namespace SnakesAndLadders
             int[] plrpstn = new int[numOfPlayers];
             Square[] squares = LoadBoard();
             win = ControlLoop(numOfPlayers, players, squares); //Returns win = true because someone has won the game
-            DisplayBoard(squares);
+            squares = SetUpBoard();
             Console.ReadKey();
         }
 
