@@ -80,20 +80,16 @@ namespace SnakesAndLadders
     }
     class Program
     {
-<<<<<<< HEAD
-        private static readonly string currentplayer;
-=======
         static Square[] Squares = LoadBoard();
->>>>>>> e2cbb4afff623778d7e415b9d35a896ff3a4c293
 
         static void Main(string[] args)
         {
             int numOfPlayers = 0;
-            CollectData(ref numOfPlayers);
+            Player[] players = CollectData(ref numOfPlayers);
             int[] plrpstn = new int[5];
         }
 
-        public static void CollectData(ref int numOfPlayers)
+        public static Player[] CollectData(ref int numOfPlayers)
         {
             List<string> colourOptions = new List<string>(new string[] { "Red", "Green", "Blue", "Cyan", "Magenta" });
 
@@ -147,13 +143,14 @@ namespace SnakesAndLadders
                 Console.ReadKey();
             }
 
+            return players;
 
         }
 
         //changes player location
-        static void Move(int roll)
+        static void Move(Player player, int roll)
         {
-            plrpstn[i] = plrpstn[i] + roll;
+           
         }
 
         static Square[] LoadBoard()
@@ -210,26 +207,13 @@ namespace SnakesAndLadders
             Squares[99].Type = "W";
             return Squares;
         }
-        static void Applyrules(int position, int length)
-        {
-            Square currentsquare = Squares[player.postition];
-            if (currentsquare.Type == "s")
-            {
-                currentsquare += currentsquare.action;
-            }
-            if (currentsquare.Type == "l")
-            {
-                currentsquare += currentsquare.action;
-            }
-            if (currentsquare.Type == "w")
-            {
-                string winplayer = currentplayer;
-            }
-        }
 
         static void ApplyRules(Player CurrentPlayer)
         {
             Square CurrentSquare = Squares[CurrentPlayer.Position];
+            Move(CurrentPlayer, CurrentSquare.Action);
+            
+            
         }
 
         static int GetDieValue()
