@@ -90,49 +90,44 @@ namespace SnakesAndLadders
             Console.ReadKey();
         }
         
-        public static bool ControlLoop(int numOfPlayers, Player[] players, Square[] squares)
+        public static void PlayGame(Player[] players, Square[] squares)
         {
             //Needs to be put to initiate the TakePlayerTurn -- win = ControlLoop(numOfPlayers, players, squares); //Returns win = true because someone has won the ga
-            bool win = false;
 
+            int PlayerNum = 0;
             do
             {
-                win = TakePlayerTurn(win);
-            } while (win == false);
 
-            return win;
+                TakePlayerTurn(players[PlayerNum], squares);
+                DisplayBoard(squares);
+                if (players[PlayerNum].Position < 99)
+                {
+                    PlayerNum = PlayerNum + 1;
+                    if (PlayerNum == players.Length)
+                    {
+                        PlayerNum = 0;
+                    }
+                }
+            } while (players[PlayerNum].Position < 99);
+
+            Console.WriteLine($"{players[PlayerNum].Name} has won the game!");
+
         }
 
-        public static bool TakePlayerTurn(int numOfPlayers, Player[] players, Square[] squares, bool win)
+        public static void TakePlayerTurn(Player currentplayer, Square[] squares)
         {
             int tempPlayerRollVal = 0;  // ∴
 
-            for (int i = 0; i < numOfPlayers; i++)
-            {
+            
                 tempPlayerRollVal = GetDieValue();
-                Console.WriteLine($"{players[i].Name}, you have rolled a {tempPlayerRollVal}");
-                //Determines new player position
-                squares[players[i].Pos].PlayerColour = null;
-                players[i].Pos = players[i].Pos + tempPlayerRollVal;
-                //Player position is updated based on snake, ladder or nothing
-                int length = squares[players[i].Pos].Action; // <===    May or may not be correct            
-                players[i].Pos = players[i].Pos + length;
-                //Re-colours square of the player
-                squares[players[i].Pos].PlayerColour = players[i].Colour;
-                //ApplyRules(players[i].Pos, length);
-                Console.WriteLine($"Your current position is {players[i].Pos}");
+                Console.WriteLine($"{currentplayer.Name}, you have rolled a {tempPlayerRollVal}");
+            //Determines new player position
+            Move(currentplayer, tempPlayerRollVal, squares);
+            ApplyRules(currentplayer, squares);
 
-                if (players[i].Pos >= 99)
-                {
-                    Console.WriteLine($"{players[i].Name} has won the game!");
-                    win = true;
-                    break; //exit the for loop...mabye
-                }
-
-            }
-
-            return win;
-
+            //Re-colours square of the player
+            squares[currentplayer.Position].PlayerColour = currentplayer.Colour;
+            Console.WriteLine($"Your current position is {currentplayer.Position}");
         }
 
         public static Player[] CollectData()
@@ -194,13 +189,13 @@ namespace SnakesAndLadders
         }
 
         //changes player location
-        static void Move(Player player, int roll)
+        static void Move(Player player, int roll, Square[] squares)
         {
             int pos1 = player.Position;
             player.Position += roll;
             int pos2 = player.Position;
-            Squares[pos1].PlayerColour = null;
-            Squares[pos2].PlayerColour = player.Colour;
+            squares[pos1].PlayerColour = null;
+            squares[pos2].PlayerColour = player.Colour;
         }
 
         static Square[] LoadBoard()
@@ -258,10 +253,10 @@ namespace SnakesAndLadders
             return Squares;
         }
 
-        static void ApplyRules(Player CurrentPlayer)
+        static void ApplyRules(Player CurrentPlayer, Square[] squares)
         {
-            Square CurrentSquare = Squares[CurrentPlayer.Position];
-            Move(CurrentPlayer, CurrentSquare.Action);
+            Square CurrentSquare = squares[CurrentPlayer.Position];
+            Move(CurrentPlayer, CurrentSquare.Action, squares);
         }
 
         static int GetDieValue()
