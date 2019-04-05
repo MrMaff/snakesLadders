@@ -81,16 +81,56 @@ namespace SnakesAndLadders
     class Program
     { 
        
-        static Square[] Squares = LoadBoard();
         
         static void Main(string[] args)
         {
             Player[] players = CollectData();
-            Square[] Squares = SetUpBoard();
-
+            Square[] squares = SetUpBoard();
+            PlayGame(players, squares);
             Console.ReadKey();
         }
         
+        public static void PlayGame(Player[] players, Square[] squares)
+        {
+            //Needs to be put to initiate the TakePlayerTurn -- win = ControlLoop(numOfPlayers, players, squares); //Returns win = true because someone has won the ga
+
+            int PlayerNum = 0;
+            do
+            {
+                Console.WriteLine("{0}, Press to roll the dice.", players[PlayerNum].Name);
+                Console.ReadKey();
+                TakePlayerTurn(players[PlayerNum], squares);
+                DisplayBoard(squares);
+                if (players[PlayerNum].Position < 99)
+                {
+                    PlayerNum = PlayerNum + 1;
+                    if (PlayerNum == players.Length)
+                    {
+                        PlayerNum = 0;
+                    }
+                }
+            } while (players[PlayerNum].Position < 99);
+
+            Console.WriteLine($"{players[PlayerNum].Name} has won the game!");
+
+        }
+
+        public static void TakePlayerTurn(Player currentplayer, Square[] squares)
+        {
+            int tempPlayerRollVal = 0;  // ∴
+
+            
+                tempPlayerRollVal = GetDieValue();
+                Console.WriteLine($"{currentplayer.Name}, you have rolled a {tempPlayerRollVal}");
+            //Determines new player position
+            Move(currentplayer, tempPlayerRollVal, squares);
+            ApplyRules(currentplayer, squares);
+
+            //Re-colours square of the player
+            squares[currentplayer.Position].PlayerColour = currentplayer.Colour;
+            Console.WriteLine($"Your current position is {currentplayer.Position}");
+        }
+
         public static Player[] CollectData()
         {
             int numOfPlayers = 0;
@@ -150,13 +190,17 @@ namespace SnakesAndLadders
         }
 
         //changes player location
-        static void Move(Player player, int roll)
+        static void Move(Player player, int roll, Square[] squares)
         {
             int pos1 = player.Position;
             player.Position += roll;
+            if (player.Position > 99)
+            {
+                player.Position = 99;
+            }
             int pos2 = player.Position;
-            Squares[pos1].PlayerColour = null;
-            Squares[pos2].PlayerColour = player.Colour;
+            squares[pos1].PlayerColour = null;
+            squares[pos2].PlayerColour = player.Colour;
         }
 
         static Square[] LoadBoard()
@@ -214,10 +258,10 @@ namespace SnakesAndLadders
             return Squares;
         }
 
-        static void ApplyRules(Player CurrentPlayer)
+        static void ApplyRules(Player CurrentPlayer, Square[] squares)
         {
-            Square CurrentSquare = Squares[CurrentPlayer.Position];
-            Move(CurrentPlayer, CurrentSquare.Action);
+            Square CurrentSquare = squares[CurrentPlayer.Position];
+            Move(CurrentPlayer, CurrentSquare.Action, squares);
         }
 
         static int GetDieValue()
