@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace OOPSnamkes
 {
@@ -26,7 +27,20 @@ namespace OOPSnamkes
 
         private void LoadBoard()
         {
+            Regex IamREGEX = new Regex(@"(\d+)(\w+)(\d*)");
+            using (StreamReader currentFile = new StreamReader(OOPSnamkes.Properties.Resources.IamTheBOARD))
+            {
+                string temp;
+                string[] temp2;
 
+                while (!currentFile.EndOfStream)
+                {
+                    temp = currentFile.ReadLine();
+                    temp2 = IamREGEX.Split(temp);
+
+                    
+                }
+            }
         }
     }
 }
