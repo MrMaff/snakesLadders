@@ -6,31 +6,46 @@ using System.Threading.Tasks;
 
 namespace OOPSnamkes
 {
-    class Shaker
+    public class Shaker
     {
-        private int roll;
+        private int totalRoll = 0;
+
         Dice roll1 = new Dice();
         Dice roll2 = new Dice();
 
-        //CompareRoll(Dice roll1, Dice roll2);
+        public void GetTotal()
+        {
+            totalRoll = roll1 + roll2;
+        }
+        static bool CompareDice(Dice roll1, Dice roll2)
+        {
+            bool equal = false;
 
-        //static bool CompareRoll(Dice roll1, Dice roll2)
-        //{
-        //    bool equal = false;
-        //    return equal;
-        //}
+            if (roll1.FaceValues == roll2.FaceValues)
+            {
+                equal = true;
+            }
+            return equal;
+        }
     }
 
     class Dice
     {
-        public int faceValue;
+        private int faceValue;
         private int min = 1;
-        private int max = 7;
+        private int max = 6;
 
+        public int FaceValues
+        {
+            get
+            {
+                return faceValue;
+            }
+        }
         public Dice()
         {
             Random rnd = new Random();
-            faceValue = rnd.Next(min, max);
+            faceValue = rnd.Next(min, max + 1);
         }
     }
 }

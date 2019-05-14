@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPSnamkes
 {
-    class Game
+    public class Game
     {
         private Queue<Player> players;
         private Board gameboard;
