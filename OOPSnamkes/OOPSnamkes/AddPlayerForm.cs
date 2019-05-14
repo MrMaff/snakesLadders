@@ -41,5 +41,23 @@ namespace OOPSnamkes
             btn_Add.Enabled = false;
             btn_OK.Enabled = false;
         }
+        
+        private void updateInstructions()
+        {
+            lbl_Instructions.Text = $"Player {(players.Count + 1).ToString()} Enter your name and choose your colour " ;
+        }
+
+        private void CheckReadyToPlay()
+        {
+            if (players.Count >= 2)
+            {
+                btn_OK.Enabled = true;
+            }
+            if (players.Count == 4)
+            {
+                btn_OK.Enabled = false;
+            }
+        }
+        
     }
 }

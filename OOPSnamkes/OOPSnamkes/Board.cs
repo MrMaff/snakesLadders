@@ -10,15 +10,7 @@ namespace OOPSnamkes
 {
     public class Board
     {
-        private List<Square> squares;
-
-        public List<Square> Squares
-        {
-            get
-            {
-                return squares;
-            }
-        }
+        public List<Square> Squares;
 
         public Board()
         {
@@ -38,6 +30,24 @@ namespace OOPSnamkes
                     temp = currentFile.ReadLine();
                     temp2 = IamREGEX.Split(temp);
 
+                    switch (temp2[2])
+                    {
+                        case "Normal":
+                            for(int i = 0; i < Convert.ToInt32(temp2[1]); i++)
+                            {
+                                Squares.Add(new Normal());
+                            }
+                            break;
+                        case "Snake":
+                                Squares.Add(new Snake(Convert.ToInt32(temp2[3])));
+                            break;
+                        case "Ladder":
+                            Squares.Add(new Ladder(Convert.ToInt32(temp2[3])));
+                            break;
+                        case "Finito":
+                            Squares.Add(new Final());
+                            break;
+                    }
                     
                 }
             }
