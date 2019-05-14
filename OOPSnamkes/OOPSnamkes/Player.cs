@@ -36,16 +36,14 @@ namespace OOPSnamkes
                 } while (Player.name != "");
                 Player.playerNumber = i;
             }
+            SetColour();
         }
 
         public void SetColour()
         {
             for (int i = 0; i < numberOfPlayers; i++)
             {
-                if (Player.playerNum)
-                {
-
-                }
+               
             }
         }
 
