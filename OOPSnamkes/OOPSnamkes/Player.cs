@@ -18,34 +18,33 @@ namespace OOPSnamkes
 
         //Temporary Values that would otherwise be user input
         private int numberOfPlayers = 5;
-        private string[] names = { "Sean", "Max", "Emily", "Alex", "Jordan" };
+        //private string[] names = { "Sean", "Max", "Emily", "Alex", "Jordan" };
 
-        public void SetName()
+        public void SetName(string name)
         {
             for (int i = 0; i < numberOfPlayers; i++)
             {
-                Player Player = new Player();
+                Player player = new Player();
                 do
                 {
                     //Ask for player name -- using placeholder insted
-                    Player.name = names[i];
-                    if (names[i] == null)
+                    player.name = name;
+                    if (names == null)
                     {
                         Console.WriteLine("You must enter a valid name!");
                     }
-                } while (Player.name != "");
-                Player.playerNumber = i;
+                } while (player.name != "");
+                player.playerNumber = i;
             }
+            SetColour();
         }
 
         public void SetColour()
         {
             for (int i = 0; i < numberOfPlayers; i++)
             {
-                if (Player.playerNum)
-                {
-
-                }
+                Console.WriteLine("Please choose a colour");
+                
             }
         }
 
