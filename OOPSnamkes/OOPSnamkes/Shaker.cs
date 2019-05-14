@@ -8,47 +8,29 @@ namespace OOPSnamkes
 {
     class Shaker
     {
-        private int totalroll;
-        Dice dice1 = new Dice();
-        Dice dice2 = new Dice();
+        private int roll;
+        Dice roll1 = new Dice();
+        Dice roll2 = new Dice();
 
-        
-        public void GetTotal()
-        {
+        //CompareRoll(Dice roll1, Dice roll2);
 
-        }
-
-        static void CompareDice()
-        {
-
-        }
-
-        static void Roll3()
-        {
-
-        }
+        //static bool CompareRoll(Dice roll1, Dice roll2)
+        //{
+        //    bool equal = false;
+        //    return equal;
+        //}
     }
 
     class Dice
     {
-        private int roll;
+        public int faceValue;
+        private int min = 1;
+        private int max = 7;
 
-        public int Roll
-        {
-            get
-            {
-                return roll;
-            }
-            set
-            {
-                this.roll = value;
-            }
-        }
         public Dice()
         {
             Random rnd = new Random();
-            this. roll = rnd.Next(1, 7);
+            faceValue = rnd.Next(min, max);
         }
-
     }
 }
