@@ -15,7 +15,7 @@ namespace OOPSnamkes
 
         public void GetTotal()
         {
-            totalRoll = roll1 + roll2;
+            totalRoll = roll1.FaceValues + roll2.FaceValues;
         }
         static bool CompareDice(Dice roll1, Dice roll2)
         {
