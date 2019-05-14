@@ -7,7 +7,7 @@ using System.IO;
 
 namespace OOPSnamkes
 {
-    class Board
+    public class Board
     {
         private List<Square> squares;
 
