@@ -13,6 +13,8 @@ namespace OOPSnamkes
         protected List<Player> occupier;
         protected int transition;
 
+        public Square()
+        { }
         public Square(int _number)
         {
             this.number = _number;
@@ -42,7 +44,7 @@ namespace OOPSnamkes
 
     }
 
-    class Normal:Square
+    class Normal: Square
     {
         public override void SetTransition(int num)
         {
@@ -51,8 +53,14 @@ namespace OOPSnamkes
         }
     }
 
-    class Snake:Square
+    class Snake: Square
     {
+        public Snake(int num)
+        {
+            this.type = 'S';
+            SetTransition(num);
+        }
+
         public override void SetTransition(int num)
         {
             this.transition = -1 * num;
@@ -60,16 +68,22 @@ namespace OOPSnamkes
         }
     }
 
-    class Ladder:Square
+    class Ladder: Square
     {
+        public Ladder(int num)
+        {
+            this.type = 'L';
+            SetTransition(num);
+        }
+
         public override void SetTransition(int num)
         {
             this.transition = num;
-            this.type = 'L';
+            
         }
     }
 
-    class Final:Square
+    class Final: Square
     {
         public override void SetTransition(int num)
         {

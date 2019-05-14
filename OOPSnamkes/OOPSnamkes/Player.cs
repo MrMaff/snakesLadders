@@ -16,8 +16,8 @@ namespace OOPSnamkes
         public bool winner;
 
         //Temporary Values that would otherwise be user input
-        private int numberOfPlayers = 5;
-        Player[] player = new Player[numberOfPlayers];
+        //private int numberOfPlayers = 5;
+        //Player[] player = new Player[numberOfPlayers];
 
         public void SetName(string name)
         {
