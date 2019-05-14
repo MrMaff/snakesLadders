@@ -21,75 +21,43 @@ namespace OOPSnamkes
 
         public void SetName(string name)
         {
-            for (int i = 0; i < numberOfPlayers; i++)
-            {
-                do
-                {
-                    //Ask for player name -- using placeholder insted
-                    player[i].name = name;
-
-                    //Validation to ensure name != null
-                    if (player[i].name == null)
-                    {
-                        Console.WriteLine("You must enter a valid name!");
-                        tbx_Name.Clear();
-                        player[i].name = tbx_Name.Text;
-                    }
-                } while (player[i].name != "");
-                
-            }
+            //code needed here to set the name of this player
 
         }
 
         public void SetColour(string colour)
         {
-            for (int i = 0; i < numberOfPlayers; i++)
-            {
-                Console.WriteLine($"{player[i].name}, Please choose a colour");
-                player[i].colour = colour;
-
-                //Removing that colour option from the list -- Not correct
-                cbx_Colour.SelectedValue -= cbx_Colour.Colour;
-            }
+            //code needed here to set the colour for this player
         }
 
         public void TakeTurn()
         {
-            for (int i = 0; i < numberOfPlayers; i++)
-            {
-            }
-            do
-            {
-                for (int i = 0; i < numberOfPlayers; i++)
-                {
-                    //Display whos turn it is...
-                    tbx_playerTurn.Text = player[i].name;
-
-                    //ApplyRules();
-                    
-                }
-            } while (winner == true);
+            //code needed here for the actions required for 1 player to take their turn:
+            // • Move the number of spaces indicated by a roll of the dice
+            // • Apply the rules  of the square they land on.
         }
 
+        private void Move(int rollTotal)
+        {
+            // Moves the player forward 'rollTotal' spaces from the current square
+        }
+        
         private void ApplyRules()
         {
-
+            //Applys the rules of the square ie it either sets the the player as a winner or it move the transition spaces.
         }
 
-        private void Move()
-        {
-
-        }
+        
 
         private bool CheckForWin()
         {
-            bool tempBool = false;
+            bool tempBool = false;  //temp return value - should checkt the square to see if it is the final square.
             return tempBool;
         }
 
         private void Transition()
         {
-
+            //moves the transitions spaces.
         }
 
     }
