@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace OOPSnamkes
 {
-    abstract class Square
+    public abstract class Square
     {
-        private int number;
-        private char type;
-        private List<Player> occupier;
-        private int transition;
+        protected int number;
+        protected char type;
+        protected List<Player> occupier;
+        protected int transition;
 
         public void AddPlayer(Player player)
         {
-
+            occupier.Add(player);
         }
 
-        public void RemovePlayer()
+        public void RemovePlayer(Player player)
         {
-
+            occupier.Remove(player);
         }
 
-        private void SetNumber(int number)
+        protected void SetNumber(int _number)
         {
-
+            this.number = _number;
         }
 
         public abstract void SetTransition(int num);
@@ -36,7 +36,8 @@ namespace OOPSnamkes
     {
         public override void SetTransition(int num)
         {
-            
+            this.transition = 1;
+            this.type = 'N';
         }
     }
 
@@ -44,7 +45,8 @@ namespace OOPSnamkes
     {
         public override void SetTransition(int num)
         {
-            
+            this.transition = -1 * num;
+            this.type = 'S';
         }
     }
 
@@ -52,7 +54,8 @@ namespace OOPSnamkes
     {
         public override void SetTransition(int num)
         {
-
+            this.transition = num;
+            this.type = 'L';
         }
     }
 
@@ -60,7 +63,8 @@ namespace OOPSnamkes
     {
         public override void SetTransition(int num)
         {
-
+            this.transition = 0;
+            this.type = 'W';
         }
     }
 }
