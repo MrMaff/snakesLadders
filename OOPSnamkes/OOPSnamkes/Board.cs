@@ -38,6 +38,21 @@ namespace OOPSnamkes
                     temp = currentFile.ReadLine();
                     temp2 = IamREGEX.Split(temp);
 
+                    switch (temp2[2])
+                    {
+                        case "Normal":
+                            squares.Add(new Normal());
+                            break;
+                        case "Snake":
+
+                            break;
+                        case "Ladder":
+
+                            break;
+                        case "Finito":
+
+                            break;
+                    }
                     
                 }
             }
