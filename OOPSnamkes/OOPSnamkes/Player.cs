@@ -18,7 +18,6 @@ namespace OOPSnamkes
         //Temporary Values that would otherwise be user input
         private int numberOfPlayers = 5;
         Player[] player = new Player[numberOfPlayers];
-        //private string[] names = { "Sean", "Max", "Emily", "Alex", "Jordan" };
 
         public void SetName(string name)
         {
@@ -49,19 +48,25 @@ namespace OOPSnamkes
                 Console.WriteLine($"{player[i].name}, Please choose a colour");
                 player[i].colour = colour;
 
-                //Removing that colour option from the list
+                //Removing that colour option from the list -- Not correct
                 cbx_Colour.SelectedValue -= cbx_Colour.Colour;
             }
         }
 
         public void TakeTurn()
         {
+            for (int i = 0; i < numberOfPlayers; i++)
+            {
+            }
             do
             {
                 for (int i = 0; i < numberOfPlayers; i++)
                 {
-                    player[i].
+                    //Display whos turn it is...
+                    tbx_playerTurn.Text = player[i].name;
+
                     //ApplyRules();
+                    
                 }
             } while (winner == true);
         }
