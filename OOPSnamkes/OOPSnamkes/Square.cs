@@ -13,6 +13,16 @@ namespace OOPSnamkes
         protected List<Player> occupier;
         protected int transition;
 
+        public Square(int _number)
+        {
+            this.number = _number;
+        }
+
+        public Square(int _number, int transition)
+        {
+            this.number = _number;
+            this.SetTransition(transition);
+        }
         public void AddPlayer(Player player)
         {
             occupier.Add(player);
