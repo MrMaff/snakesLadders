@@ -14,43 +14,56 @@ namespace OOPSnamkes
         private string colour;
         private Square currentSquare;
         public bool winner;
-        public int playerNumber;
 
         //Temporary Values that would otherwise be user input
         private int numberOfPlayers = 5;
+        Player[] player = new Player[numberOfPlayers];
         //private string[] names = { "Sean", "Max", "Emily", "Alex", "Jordan" };
 
         public void SetName(string name)
         {
             for (int i = 0; i < numberOfPlayers; i++)
             {
-                Player player = new Player();
                 do
                 {
                     //Ask for player name -- using placeholder insted
-                    player.name = name;
-                    if (names == null)
+                    player[i].name = name;
+
+                    //Validation to ensure name != null
+                    if (player[i].name == null)
                     {
                         Console.WriteLine("You must enter a valid name!");
+                        tbx_Name.Clear();
+                        player[i].name = tbx_Name.Text;
                     }
-                } while (player.name != "");
-                player.playerNumber = i;
+                } while (player[i].name != "");
+                
             }
-            SetColour();
+
         }
 
-        public void SetColour()
+        public void SetColour(string colour)
         {
             for (int i = 0; i < numberOfPlayers; i++)
             {
-                Console.WriteLine("Please choose a colour");
-                
+                Console.WriteLine($"{player[i].name}, Please choose a colour");
+                player[i].colour = colour;
+
+                //Removing that colour option from the list
+                cbx_Colour.SelectedValue -= cbx_Colour.Colour;
             }
         }
 
         public void TakeTurn()
         {
-
+            do
+            {
+                for (int i = 0; i < numberOfPlayers; i++)
+                {
+                    player[i].
+                    //ApplyRules();
+                }
+            } while (winner == true);
         }
 
         private void ApplyRules()
