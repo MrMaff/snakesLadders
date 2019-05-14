@@ -27,13 +27,17 @@ namespace OOPSnamkes
             tempPlayer.SetColour(cbx_Colour.SelectedValue);
             players.Add(tempPlayer);
             btn_Add.Enabled = false;
-
-            cbx_Colour.Items.Remove(cbx_Colour.SelectedItem);
-            if (cbx_Colour.Items.Count>0)
+            
+            if (players.Count<4)
             {
-                //cbx_Colour.Text = cbx_Colour.Items.
-
+                cbx_colours.Items.Remove(cbx_colours.SelectedItem);
+                tbx_Name.Text = "";
+                cbx_Colour.SelectedIndex = 0;
+                updateInstructions();
+                CheckReadyToPlay();
             }
+
+            
         }
 
         private void AddPlayerForm_Load(object sender, EventArgs e)
