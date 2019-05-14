@@ -36,7 +36,7 @@ namespace OOPSnamkes
     {
         public override void SetTransition(int num)
         {
-            this.transition = 1;
+            this.transition = 0;
             this.type = 'N';
         }
     }
