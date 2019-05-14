@@ -123,6 +123,7 @@
             this.Controls.Add(this.lbl_Player);
             this.Name = "AddPlayerForm";
             this.Text = "AddPlayerForm";
+            this.Load += new System.EventHandler(this.AddPlayerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
