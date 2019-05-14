@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPSnamkes
 {
-    abstract class Square
+    public abstract class Square
     {
         protected int number;
         protected char type;
