@@ -13,9 +13,19 @@ namespace OOPSnamkes
         Dice roll1 = new Dice();
         Dice roll2 = new Dice();
 
-        public void GetTotal()
+        public int GetTotal()
         {
+            bool equal;
+
             totalRoll = roll1.FaceValues + roll2.FaceValues;
+
+            equal = CompareDice(roll1, roll2);
+
+            if (equal)
+            {
+                Roll3();
+            }
+            return totalRoll;
         }
         static bool CompareDice(Dice roll1, Dice roll2)
         {
@@ -26,6 +36,13 @@ namespace OOPSnamkes
                 equal = true;
             }
             return equal;
+        }
+
+        static void Roll3()
+        {
+            Dice roll3 = new Dice();
+
+            totalRoll = totalRoll + roll3.FaceValues;
         }
     }
 
