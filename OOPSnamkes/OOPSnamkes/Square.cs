@@ -31,4 +31,36 @@ namespace OOPSnamkes
         public abstract void SetTransition(int num);
 
     }
+
+    class Normal:Square
+    {
+        public override void SetTransition(int num)
+        {
+            
+        }
+    }
+
+    class Snake:Square
+    {
+        public override void SetTransition(int num)
+        {
+            
+        }
+    }
+
+    class Ladder:Square
+    {
+        public override void SetTransition(int num)
+        {
+
+        }
+    }
+
+    class Final:Square
+    {
+        public override void SetTransition(int num)
+        {
+
+        }
+    }
 }
