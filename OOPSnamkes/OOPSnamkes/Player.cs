@@ -12,10 +12,10 @@ namespace OOPSnamkes
 
         private string name;
         private string colour;
-        private Square currentSquare;
         public bool winner;
-        Shaker shaker;
-
+        private int position;
+        private Shaker shaker;
+        private Square currentSquare;        
 
         public Player()
         {
@@ -24,33 +24,43 @@ namespace OOPSnamkes
 
         public void SetName(string name)
         {
-            //code needed here to set the name of this player
             this.name = name;
         }
 
         public void SetColour(string colour)
-        {
-            //code needed here to set the colour for this player
+        {            
             this.colour = colour;
         }
 
+        /// <summary>
+        /// The actions required for 1 player to take their turn:
+        /// • Move the number of spaces indicated by a roll of the dice,
+        /// • Apply the rules  of the square they land on.
+        /// </summary>
         public void TakeTurn()
         {
-            //code needed here for the actions required for 1 player to take their turn:
-            // • Move the number of spaces indicated by a roll of the dice
-            // • Apply the rules  of the square they land on.
-            int total = shaker.GetTotal();
-            currentSquare += total;
+            Move(shaker.GetTotal());            
         }
-
+        
+        /// <summary>
+        /// Moves the player forward 'rollTotal' spaces from the current square
+        /// </summary>
+        /// <param name="rollTotal"></param>
         private void Move(int rollTotal)
         {
-            // Moves the player forward 'rollTotal' spaces from the current square
+            //Player.Position += total dice roll
+            position += rollTotal;
+
+            ApplyRules();
         }
 
+        /// <summary>
+        /// Applys the rules of the square ie it either sets the the player as a winner or it move the transition spaces.
+        /// </summary>
         private void ApplyRules()
         {
-            //Applys the rules of the square ie it either sets the the player as a winner or it move the transition spaces.
+            position += Transition();            
+            CheckForWin();
         }
 
 
@@ -61,9 +71,18 @@ namespace OOPSnamkes
             return tempBool;
         }
 
-        private void Transition()
-        {
-            //moves the transitions spaces.
+        /// <summary>
+        /// //Redefines the Player.position based off the transition effect
+        /// </summary>
+        /// <returns></returns>
+        private int Transition()
+        {            
+            int transition = 0;
+
+            currentSquare.SetTransition(position);
+            position += Transition;
+
+            return transition;
         }
 
     }

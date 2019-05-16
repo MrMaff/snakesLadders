@@ -14,7 +14,10 @@ namespace OOPSnamkes
         protected int transition;
 
         public Square()
-        { }
+        {
+
+        }
+
         public Square(int _number)
         {
             this.number = _number;
