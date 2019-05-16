@@ -46,6 +46,7 @@ namespace OOPSnamkes
 
     class Normal: Square
     {
+        public Normal(int num) : base(num) { }
         public override void SetTransition(int num)
         {
             this.transition = 0;
@@ -55,6 +56,8 @@ namespace OOPSnamkes
 
     class Snake: Square
     {
+
+        public Snake(int num,int transition) : base(num, transition) { }
         public Snake(int num)
         {
             this.type = 'S';
@@ -70,6 +73,7 @@ namespace OOPSnamkes
 
     class Ladder: Square
     {
+        public Ladder(int num, int transition) : base(num, transition) { }
         public Ladder(int num)
         {
             this.type = 'L';
@@ -85,6 +89,7 @@ namespace OOPSnamkes
 
     class Final: Square
     {
+        public Final(int num) : base(num) { }
         public override void SetTransition(int num)
         {
             this.transition = 0;

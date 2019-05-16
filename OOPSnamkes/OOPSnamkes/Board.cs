@@ -20,36 +20,47 @@ namespace OOPSnamkes
         private void LoadBoard()
         {
             Regex IamREGEX = new Regex(@"(\d+)(\w+)(\d*)");
-            using (StreamReader currentFile = new StreamReader(OOPSnamkes.Properties.Resources.IamTheBOARD))
+
+            string Boardtxt = OOPSnamkes.Properties.Resources.IamTheBOARD;
+            List<string> currentFile = Boardtxt.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+
+            string temp;
+            string[] temp2;
+            int count = 1;
+
+
+            while (currentFile.Count != 0)
             {
-                string temp;
-                string[] temp2;
+                temp = currentFile.First();
+                temp2 = IamREGEX.Split(temp);
 
-                while (!currentFile.EndOfStream)
+                switch (temp2[2])
                 {
-                    temp = currentFile.ReadLine();
-                    temp2 = IamREGEX.Split(temp);
-
-                    switch (temp2[2])
-                    {
-                        case "Normal":
-                            for(int i = 0; i < Convert.ToInt32(temp2[1]); i++)
-                            {
-                                Squares.Add(new Normal());
-                            }
-                            break;
-                        case "Snake":
-                                Squares.Add(new Snake(Convert.ToInt32(temp2[3])));
-                            break;
-                        case "Ladder":
-                            Squares.Add(new Ladder(Convert.ToInt32(temp2[3])));
-                            break;
-                        case "Finito":
-                            Squares.Add(new Final());
-                            break;
-                    }
-                    
+                    case "Normal":
+                        for (int i = 0; i < Convert.ToInt32(temp2[1]); i++)
+                        {
+                            Squares.Add(new Normal(count));
+                            count++;
+                        }
+                        break;
+                    case "Snake":
+                        Squares.Add(new Snake(count, Convert.ToInt32(temp2[3])));
+                        count++;
+                        break;
+                    case "Ladder":
+                        Squares.Add(new Ladder(count, Convert.ToInt32(temp2[3])));
+                        count++;
+                        break;
+                    case "Finito":
+                        Squares.Add(new Final(count));
+                        count++;
+                        break;
                 }
+
+                currentFile.RemoveAt(0);
+
+
             }
         }
     }
