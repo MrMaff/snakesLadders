@@ -12,6 +12,8 @@ namespace OOPSnamkes
 {
     public partial class Form1 : Form
     {
+
+        Game game = new Game();
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +21,7 @@ namespace OOPSnamkes
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            game.PlayGame();
         }
     }
 }

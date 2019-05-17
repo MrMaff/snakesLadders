@@ -14,6 +14,7 @@ namespace OOPSnamkes
     {
 
         private List<Player> players;
+        public List<Player> Players { get { return players; } }
 
         public AddPlayerForm()
         {
@@ -24,13 +25,13 @@ namespace OOPSnamkes
         {
             Player tempPlayer = new Player();
             tempPlayer.SetName(tbx_Name.Text);
-            tempPlayer.SetColour(cbx_Colour.SelectedValue);
+            tempPlayer.SetColour(cbx_Colour.SelectedValue.ToString());
             players.Add(tempPlayer);
             btn_Add.Enabled = false;
             
             if (players.Count<4)
             {
-                cbx_colours.Items.Remove(cbx_colours.SelectedItem);
+                cbx_Colour.Items.Remove(cbx_Colour.SelectedItem);
                 tbx_Name.Text = "";
                 cbx_Colour.SelectedIndex = 0;
                 updateInstructions();
@@ -48,7 +49,7 @@ namespace OOPSnamkes
         
         private void updateInstructions()
         {
-            lbl_Instructions.Text = $"Player {(players.Count + 1).ToString()} Enter your name and choose your colour " ;
+            lbl_Player.Text = $"Player {(players.Count + 1).ToString()} Enter your name and choose your colour " ;
         }
 
         private void CheckReadyToPlay()
@@ -62,6 +63,15 @@ namespace OOPSnamkes
                 btn_OK.Enabled = false;
             }
         }
-        
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            btn_Cancel.DialogResult = DialogResult.Cancel;
+        }
+
+        private void btn_OK_Click(object sender, EventArgs e)
+        {
+            btn_OK.DialogResult = DialogResult.OK;
+        }
     }
 }
