@@ -15,7 +15,8 @@ namespace OOPSnamkes
         public bool winner;
         private int position;
         private Shaker shaker;
-        private Square currentSquare;        
+        private Square currentSquare;
+        private Board board;
 
         public Player()
         {
@@ -58,8 +59,9 @@ namespace OOPSnamkes
         /// Applys the rules of the square ie it either sets the the player as a winner or it move the transition spaces.
         /// </summary>
         private void ApplyRules()
-        {
-            position += Transition();            
+        {           
+            position += Transition(); 
+            
             CheckForWin();
         }
 
@@ -79,8 +81,13 @@ namespace OOPSnamkes
         {            
             int transition = 0;
 
-            currentSquare.SetTransition(position);
-            position += Transition;
+            //if (board.Squares[position].)
+            //{
+
+            //}
+
+            //currentSquare.SetTransition(position);
+            //position += Transition;
 
             return transition;
         }
