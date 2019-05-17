@@ -14,20 +14,24 @@ namespace OOPSnamkes
         private string colour;
         private Square currentSquare;
         public bool winner;
+        Shaker shaker;
 
-        //Temporary Values that would otherwise be user input
-        private int numberOfPlayers = 5;
-        Player[] player = new Player[numberOfPlayers];
+
+        public Player()
+        {
+            shaker = new Shaker();
+        }
 
         public void SetName(string name)
         {
             //code needed here to set the name of this player
-
+            this.name = name;            
         }
 
         public void SetColour(string colour)
         {
             //code needed here to set the colour for this player
+            this.colour = colour;
         }
 
         public void TakeTurn()
@@ -35,6 +39,8 @@ namespace OOPSnamkes
             //code needed here for the actions required for 1 player to take their turn:
             // • Move the number of spaces indicated by a roll of the dice
             // • Apply the rules  of the square they land on.
+            int total = shaker.GetTotal();
+            currentSquare += total;
         }
 
         private void Move(int rollTotal)

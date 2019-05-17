@@ -10,12 +10,15 @@ namespace OOPSnamkes
     {
         private int totalRoll = 0;
 
-        Dice roll1 = new Dice();
-        Dice roll2 = new Dice();
+        Dice roll1;
+        Dice roll2;
 
         public int GetTotal()
         {
             bool equal;
+
+            roll1 = new Dice();
+            roll2 = new Dice();
 
             totalRoll = roll1.FaceValues + roll2.FaceValues;
 
