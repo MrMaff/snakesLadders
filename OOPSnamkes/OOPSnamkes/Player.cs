@@ -17,6 +17,9 @@ namespace OOPSnamkes
         private Shaker shaker;
         private Square currentSquare;
         private Board board;
+        private Normal normal;
+        private Snake snake;
+        private Ladder ladder;
 
         public Player()
         {
@@ -59,7 +62,7 @@ namespace OOPSnamkes
         /// Applys the rules of the square ie it either sets the the player as a winner or it move the transition spaces.
         /// </summary>
         private void ApplyRules()
-        {           
+        {
             position += Transition(); 
             
             CheckForWin();
@@ -69,7 +72,8 @@ namespace OOPSnamkes
 
         private bool CheckForWin()
         {
-            bool tempBool = false;  //temp return value - should checkt the square to see if it is the final square.
+            bool tempBool = false;  //temp return value - should chect the square to see if it is the final square.
+            
             return tempBool;
         }
 
@@ -80,12 +84,12 @@ namespace OOPSnamkes
         private int Transition()
         {            
             int transition = 0;
+            currentSquare.SetTransition(position);
+            
 
-            //if (board.Squares[position].)
-            //{
-
-            //}
-
+            //string currentSquareType;
+            //currentSquareType = currentSquare.SetTransition
+                     
             //currentSquare.SetTransition(position);
             //position += Transition;
 
