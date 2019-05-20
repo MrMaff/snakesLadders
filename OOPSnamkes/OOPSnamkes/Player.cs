@@ -20,6 +20,7 @@ namespace OOPSnamkes
         private Normal normal;
         private Snake snake;
         private Ladder ladder;
+        private Final final;
 
         public Player()
         {
@@ -43,7 +44,10 @@ namespace OOPSnamkes
         /// </summary>
         public void TakeTurn()
         {
-            Move(shaker.GetTotal());            
+            do
+            {
+                Move(shaker.GetTotal());
+            } while (winner == false);            
         }
         
         /// <summary>
@@ -69,12 +73,18 @@ namespace OOPSnamkes
         }
 
 
-
+        /// <summary>
+        /// Checks if the currentsquare == finalsquare. If so, winner == true and that player wins.
+        /// </summary>
+        /// <returns></returns>
         private bool CheckForWin()
         {
-            bool tempBool = false;  //temp return value - should chect the square to see if it is the final square.
-            
-            return tempBool;
+            if (currentSquare.GetType() == final.GetType())
+            {
+                winner = true;
+            }
+
+            return winner;
         }
 
         /// <summary>
@@ -84,8 +94,8 @@ namespace OOPSnamkes
         private int Transition()
         {            
             int transition = 0;
-            currentSquare.SetTransition(position);
-            
+
+            currentSquare.SetTransition(position); 
 
             //string currentSquareType;
             //currentSquareType = currentSquare.SetTransition
