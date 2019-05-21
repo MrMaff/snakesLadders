@@ -13,7 +13,7 @@ namespace OOPSnamkes
     public partial class AddPlayerForm : Form
     {
 
-        private List<Player> players;
+        private List<Player> players = new List<Player>();
         public List<Player> Players { get { return players; } }
 
         public AddPlayerForm()
@@ -25,7 +25,7 @@ namespace OOPSnamkes
         {
             Player tempPlayer = new Player();
             tempPlayer.SetName(tbx_Name.Text);
-            tempPlayer.SetColour(cbx_Colour.SelectedValue.ToString());
+            tempPlayer.SetColour(cbx_Colour.Text);
             players.Add(tempPlayer);
             btn_Add.Enabled = false;
             
@@ -45,6 +45,8 @@ namespace OOPSnamkes
         {
             btn_Add.Enabled = false;
             btn_OK.Enabled = false;
+            updateInstructions();
+            cbx_Colour.SelectedIndex = 0;
         }
         
         private void updateInstructions()
@@ -72,6 +74,15 @@ namespace OOPSnamkes
         private void btn_OK_Click(object sender, EventArgs e)
         {
             btn_OK.DialogResult = DialogResult.OK;
+        }
+
+        private void tbx_Name_Switch(object sender, EventArgs e)
+        {
+            if (tbx_Name.Text.Length>0)
+            {
+                btn_Add.Enabled = true;
+            }
+            else btn_Add.Enabled = false;
         }
     }
 }

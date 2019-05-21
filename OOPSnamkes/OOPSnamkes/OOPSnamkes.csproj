@@ -96,5 +96,41 @@
   <ItemGroup>
     <None Include="IamTheBOARD.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blueCounter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greenCounter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redCounter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s&amp;l.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snlboard001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yellowCounter.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

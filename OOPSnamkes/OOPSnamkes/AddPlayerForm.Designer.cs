@@ -71,6 +71,8 @@
             this.tbx_Name.Name = "tbx_Name";
             this.tbx_Name.Size = new System.Drawing.Size(170, 20);
             this.tbx_Name.TabIndex = 3;
+            this.tbx_Name.TextChanged += new System.EventHandler(this.tbx_Name_Switch);
+            this.tbx_Name.Leave += new System.EventHandler(this.tbx_Name_Switch);
             // 
             // cbx_Colour
             // 

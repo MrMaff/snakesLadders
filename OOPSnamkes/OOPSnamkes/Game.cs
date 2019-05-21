@@ -9,7 +9,7 @@ namespace OOPSnamkes  //MLO
 {
     public class Game
     {
-        private Queue<Player> players;
+        private Queue<Player> players = new Queue<Player>();
         private Board gameboard;
         public int NumberOfPlayers { get { return players.Count; } }
 
@@ -18,9 +18,9 @@ namespace OOPSnamkes  //MLO
             CreateBoard();
         }
 
-        public void CreatePlayerQueue(List<Player> players)
+        public void CreatePlayerQueue(List<Player> newplayers)
         {   
-            foreach (var person in players)
+            foreach (var person in newplayers)
             {
                 this.players.Enqueue(person);
             }
@@ -48,20 +48,20 @@ namespace OOPSnamkes  //MLO
 
         public void PlayGame()
         {
-            if(null == players || players.Count <= 0)
-            {
+
+            GetPlayers();
+            CreateBoard();
+
                 Player currentPlayer = new Player();
 
-                GetPlayers();
-                CreateBoard();
-                do
-                {
-                    currentPlayer = players.Dequeue();
-                    currentPlayer.TakeTurn(gameboard);
-                    players.Enqueue(currentPlayer);
+                    do
+                    {
+                        currentPlayer = players.Dequeue();
+                        currentPlayer.TakeTurn(gameboard);
+                        players.Enqueue(currentPlayer);
 
-                } while (currentPlayer.winner == false);
-            }
+                    } while (currentPlayer.winner == false);
+      
         }
 
     }

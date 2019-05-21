@@ -50,7 +50,7 @@ namespace OOPSnamkes
             currentSquare.RemovePlayer(this);
 
             //Player.Position += total dice roll  
-            currentSquare.number += rollTotal;
+            //currentSquare.number += rollTotal;
             ApplyRules();
 
             //Given the new position, put the player in the new square.
@@ -64,7 +64,7 @@ namespace OOPSnamkes
         /// </summary>
         private void ApplyRules()
         {
-            position += Transition(); 
+            //position += Transition(); 
             
             CheckForWin();
         }
@@ -92,7 +92,7 @@ namespace OOPSnamkes
         {            
             int transition = 0;
                        
-            currentSquare.SetTransition(position);   //Why change the transition value of the current square?
+            //currentSquare.SetTransition(position);   //Why change the transition value of the current square?
 
             //string currentSquareType;
             //currentSquareType = currentSquare.SetTransition

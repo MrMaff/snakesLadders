@@ -61,11 +61,151 @@ namespace OOPSnamkes.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap blueCounter {
+            get {
+                object obj = ResourceManager.GetObject("blueCounter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap die1 {
+            get {
+                object obj = ResourceManager.GetObject("die1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap die2 {
+            get {
+                object obj = ResourceManager.GetObject("die2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap die3 {
+            get {
+                object obj = ResourceManager.GetObject("die3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap die4 {
+            get {
+                object obj = ResourceManager.GetObject("die4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap die5 {
+            get {
+                object obj = ResourceManager.GetObject("die5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap die6 {
+            get {
+                object obj = ResourceManager.GetObject("die6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap greenCounter {
+            get {
+                object obj = ResourceManager.GetObject("greenCounter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 8Normal
+        ///1Ladder22
+        ///6Normal
+        ///1Ladder29
+        ///1Normal
+        ///1Ladder46
+        ///13Normal
+        ///1Snake27
+        ///15Normal
+        ///1Ladder18
+        ///1Normal
+        ///1Ladder43
+        ///12Normal
+        ///1Ladder18
+        ///10Normal
+        ///1Snake52
+        ///11Normal
+        ///1Snake35
+        ///12Normal
+        ///1Snake60
+        ///1Finito.
         /// </summary>
         internal static string IamTheBOARD {
             get {
                 return ResourceManager.GetString("IamTheBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap redCounter {
+            get {
+                object obj = ResourceManager.GetObject("redCounter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap s_l {
+            get {
+                object obj = ResourceManager.GetObject("s_l", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap snlboard001 {
+            get {
+                object obj = ResourceManager.GetObject("snlboard001", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yellowCounter {
+            get {
+                object obj = ResourceManager.GetObject("yellowCounter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
