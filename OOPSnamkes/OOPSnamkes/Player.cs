@@ -54,15 +54,19 @@ namespace OOPSnamkes
             //Given the new position, put the player in the new square.
             currentSquare.AddPlayer(this);
 
+            ApplyRules(GameBoard);
             
         }
 
         /// <summary>
         /// Applys the rules of the square ie it either sets the the player as a winner or it move the transition spaces.
         /// </summary>
-        private void ApplyRules()
+        private void ApplyRules(Board GameBoard)
         {
-            ///check for ladders and things 
+            if(currentSquare.Type == 'S' || currentSquare.Type == 'L')
+            {
+                Move(currentSquare.Transition, GameBoard);
+            }
             
             CheckForWin();
         }
@@ -81,25 +85,5 @@ namespace OOPSnamkes
 
             return winner;
         }
-
-        /// <summary>
-        /// //Redefines the Player.position based off the transition effect
-        /// </summary>
-        /// <returns></returns>
-        private int Transition()
-        {            
-            int transition = 0;
-                       
-            currentSquare.SetTransition(position);   //Why change the transition value of the current square?
-
-            //string currentSquareType;
-            //currentSquareType = currentSquare.SetTransition
-                     
-            //currentSquare.SetTransition(position);
-            //position += Transition;
-
-            return transition;
-        }
-
     }
 }

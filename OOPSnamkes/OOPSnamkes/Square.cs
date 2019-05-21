@@ -29,6 +29,14 @@ namespace OOPSnamkes
             }
         }
 
+        public int Transition
+        {
+            get
+            {
+                return transition;
+            }
+        }
+
         public Square()
         {
 
