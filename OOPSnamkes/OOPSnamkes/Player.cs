@@ -47,7 +47,7 @@ namespace OOPSnamkes
             do
             {
                 Move(shaker.GetTotal());
-            } while (winner == false);            
+            } while (winner == false);   //This will mean it repeats for this player until they are the winner?         
         }
         
         /// <summary>
@@ -58,6 +58,8 @@ namespace OOPSnamkes
         {
             //Player.Position += total dice roll
             position += rollTotal;
+
+            //A player must leave their current square then be placed in their new square.
 
             ApplyRules();
         }
@@ -95,7 +97,7 @@ namespace OOPSnamkes
         {            
             int transition = 0;
 
-            currentSquare.SetTransition(position); 
+            currentSquare.SetTransition(position);   //Why change the transition value of the current square?
 
             //string currentSquareType;
             //currentSquareType = currentSquare.SetTransition
