@@ -48,12 +48,14 @@ namespace OOPSnamkes
 
         public void PlayGame()
         {
-            if(null == players || players.Count <= 0)
-            {
+            
                 Player currentPlayer = new Player();
 
                 GetPlayers();
                 CreateBoard();
+
+            if ((null != players && players.Count >= 0))
+            {
                 do
                 {
                     currentPlayer = players.Dequeue();
