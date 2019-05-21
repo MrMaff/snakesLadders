@@ -13,6 +13,14 @@ namespace OOPSnamkes
         protected List<Player> occupier;
         protected int transition;
 
+        public char Type
+        {
+            get
+            {
+                return type;
+            }
+        }
+
         public Square()
         {
 
