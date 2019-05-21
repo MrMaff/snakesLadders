@@ -8,17 +8,17 @@ namespace OOPSnamkes
 {
     public class Player
     {       
-        private string name;
+        private string name;  //Need a property so that the name can be read but not written to at a later date
         private string colour;
         public bool winner;
-        private int position;
+        private int position; // Irrelevant this can be deleted as the players position is based off current sqaure
         private Shaker shaker;
         private Square currentSquare;
-        private Board board;
-        private Normal normal;
-        private Snake snake;
-        private Ladder ladder;
-        private Final final;
+        private Board board; // Irrelevant this happens at a layer above player
+        private Normal normal; // all irrelevant
+        private Snake snake; // all irrelevant
+        private Ladder ladder; // all irrelevant
+        private Final final; // all irrelevant
 
         public Player()
         {
