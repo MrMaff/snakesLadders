@@ -10,15 +10,10 @@ namespace OOPSnamkes
     {       
         private string name;  //Need a property so that the name can be read but not written to at a later date
         private string colour;
-        public bool winner;
-        private int position; // Irrelevant this can be deleted as the players position is based off current sqaure
+        public bool winner;        
         private Shaker shaker;
         private Square currentSquare;
-        private Board board; // Irrelevant this happens at a layer above player
-        private Normal normal; // all irrelevant
-        private Snake snake; // all irrelevant
-        private Ladder ladder; // all irrelevant
-        private Final final; // all irrelevant
+        
 
         public Player()
         {
@@ -99,7 +94,10 @@ namespace OOPSnamkes
         private int Transition()
         {            
             int transition = 0;
+            if (currentSquare.GetType() == )
+            {
 
+            }            
             currentSquare.SetTransition(position);   //Why change the transition value of the current square?
 
             //string currentSquareType;
