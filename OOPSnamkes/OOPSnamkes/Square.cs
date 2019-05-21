@@ -21,6 +21,14 @@ namespace OOPSnamkes
             }
         }
 
+        public int Number
+        {
+            get
+            {
+                return number;
+            }
+        }
+
         public Square()
         {
 

@@ -49,9 +49,7 @@ namespace OOPSnamkes
         {
             currentSquare.RemovePlayer(this);
 
-            //Player.Position += total dice roll  
-            currentSquare.number += rollTotal;
-            ApplyRules();
+            this.currentSquare = GameBoard.Squares[currentSquare.Number + rollTotal - 1];
 
             //Given the new position, put the player in the new square.
             currentSquare.AddPlayer(this);
@@ -64,7 +62,7 @@ namespace OOPSnamkes
         /// </summary>
         private void ApplyRules()
         {
-            position += Transition(); 
+            ///check for ladders and things 
             
             CheckForWin();
         }
