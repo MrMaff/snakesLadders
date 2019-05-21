@@ -45,7 +45,7 @@ namespace OOPSnamkes
         /// A player must leave their current square then be placed in their new square.
         /// </summary>
         /// <param name="rollTotal"></param>
-        private void Move(int rollTotal, Board GameaBoard)
+        private void Move(int rollTotal, Board GameBoard)
         {
             currentSquare.RemovePlayer(this);
 
