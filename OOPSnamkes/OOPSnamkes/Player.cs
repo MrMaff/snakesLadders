@@ -35,19 +35,16 @@ namespace OOPSnamkes
         /// • Move the number of spaces indicated by a roll of the dice,
         /// • Apply the rules  of the square they land on.
         /// </summary>
-        public void TakeTurn()
+        public void TakeTurn(Board GameBoard)
         {
-            do
-            {
-                Move(shaker.GetTotal());
-            } while (winner == false);   //This will mean it repeats for this player until they are the winner?         
+                Move(shaker.GetTotal(), GameBoard);
         }
         
         /// <summary>
         /// Moves the player forward 'rollTotal' spaces from the current square
         /// </summary>
         /// <param name="rollTotal"></param>
-        private void Move(int rollTotal)
+        private void Move(int rollTotal, Board GameaBoard)
         {
             //A player must leave their current square then be placed in their new square.
             currentSquare.RemovePlayer(this);
