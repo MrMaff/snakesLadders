@@ -19,3 +19,10 @@
 12Normal
 1Snake60
 1Finito
+
+
+
+4Normal
+1Ladder21
+2Normal
+1Ladder26
