@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 namespace OOPSnamkes
 {
     public class Player
-    {
-        //Console.WriteLine is a placeholder for a display to the screen
-
+    {       
         private string name;
         private string colour;
         public bool winner;
@@ -60,6 +58,7 @@ namespace OOPSnamkes
             position += rollTotal;
 
             //A player must leave their current square then be placed in their new square.
+            currentSquare.RemovePlayer();            
 
             ApplyRules();
         }
