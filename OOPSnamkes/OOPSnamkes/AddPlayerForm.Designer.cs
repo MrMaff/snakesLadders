@@ -75,6 +75,11 @@
             // cbx_Colour
             // 
             this.cbx_Colour.FormattingEnabled = true;
+            this.cbx_Colour.Items.AddRange(new object[] {
+            "Red",
+            "Green",
+            "Yellow",
+            "Blue"});
             this.cbx_Colour.Location = new System.Drawing.Point(84, 131);
             this.cbx_Colour.Name = "cbx_Colour";
             this.cbx_Colour.Size = new System.Drawing.Size(170, 21);
