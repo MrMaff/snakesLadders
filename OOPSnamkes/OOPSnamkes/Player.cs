@@ -91,7 +91,9 @@ namespace OOPSnamkes
         private int Transition()
         {            
             int transition = 0;
-                       
+
+            
+
             currentSquare.SetTransition(position);   //Why change the transition value of the current square?
 
             //string currentSquareType;
