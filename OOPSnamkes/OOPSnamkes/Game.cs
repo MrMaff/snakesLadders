@@ -58,7 +58,7 @@ namespace OOPSnamkes
                 currentPlayer.TakeTurn();
                 players.Enqueue(currentPlayer);
 
-            } while (currentPlayer.winner = false);
+            } while (currentPlayer.winner == false);
         }
 
     }
