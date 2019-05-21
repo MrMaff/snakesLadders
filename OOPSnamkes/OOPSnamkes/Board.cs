@@ -24,6 +24,7 @@ namespace OOPSnamkes
             string Boardtxt = OOPSnamkes.Properties.Resources.IamTheBOARD;
             List<string> currentFile = Boardtxt.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
+            Squares = new List<Square>();
 
             string temp;
             string[] temp2;
