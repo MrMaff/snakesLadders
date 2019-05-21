@@ -79,7 +79,7 @@ namespace OOPSnamkes
         /// <returns></returns>
         private bool CheckForWin()
         {
-            if (currentSquare.GetType() == final.GetType())
+            if (currentSquare.Type == 'W')
             {
                 winner = true;
             }
