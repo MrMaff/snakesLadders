@@ -54,13 +54,17 @@ namespace OOPSnamkes
         /// <param name="rollTotal"></param>
         private void Move(int rollTotal)
         {
+            //A player must leave their current square then be placed in their new square.
+            currentSquare.RemovePlayer(player);
+
             //Player.Position += total dice roll
             position += rollTotal;
-
-            //A player must leave their current square then be placed in their new square.
-            currentSquare.RemovePlayer();            
-
             ApplyRules();
+
+            //Given the new position, put the player in the new square.
+            currentSquare.AddPlayer(player);
+
+            
         }
 
         /// <summary>
