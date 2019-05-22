@@ -23,6 +23,7 @@ namespace OOPSnamkes  //MLO
             foreach (var person in newplayers)
             {
                 this.players.Enqueue(person);
+                this.players.Last().SetSquare(gameboard[0]);
             }
         }
 
@@ -48,9 +49,9 @@ namespace OOPSnamkes  //MLO
 
         public void PlayGame()
         {
-
-            GetPlayers();
+            
             CreateBoard();
+            GetPlayers();
 
                 Player currentPlayer = new Player();
 
