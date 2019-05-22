@@ -45,26 +45,34 @@ namespace OOPSnamkes
         /// A player must leave their current square then be placed in their new square.
         /// </summary>
         /// <param name="rollTotal"></param>
-        private void Move(int rollTotal, Board GameaBoard)
+        private void Move(int rollTotal, Board GameBoard)
         {
             currentSquare.RemovePlayer(this);
 
-            //Player.Position += total dice roll  
-            //currentSquare.number += rollTotal;
-            ApplyRules();
+            this.currentSquare = GameBoard.Squares[currentSquare.Number + rollTotal - 1];
 
             //Given the new position, put the player in the new square.
             currentSquare.AddPlayer(this);
 
+            ApplyRules(GameBoard);
             
+        }
+
+        public void SetSquare(Square CurrentSquare)
+        {
+            this.currentSquare = CurrentSquare;
+            this.currentSquare.AddPlayer(this);
         }
 
         /// <summary>
         /// Applys the rules of the square ie it either sets the the player as a winner or it move the transition spaces.
         /// </summary>
-        private void ApplyRules()
+        private void ApplyRules(Board GameBoard)
         {
-            //position += Transition(); 
+            if(currentSquare.Type == 'S' || currentSquare.Type == 'L')
+            {
+                Move(currentSquare.Transition, GameBoard);
+            }
             
             CheckForWin();
         }
@@ -83,25 +91,5 @@ namespace OOPSnamkes
 
             return winner;
         }
-
-        /// <summary>
-        /// //Redefines the Player.position based off the transition effect
-        /// </summary>
-        /// <returns></returns>
-        private int Transition()
-        {            
-            int transition = 0;
-                       
-            //currentSquare.SetTransition(position);   //Why change the transition value of the current square?
-
-            //string currentSquareType;
-            //currentSquareType = currentSquare.SetTransition
-                     
-            //currentSquare.SetTransition(position);
-            //position += Transition;
-
-            return transition;
-        }
-
     }
 }

@@ -13,8 +13,10 @@ namespace OOPSnamkes
     public partial class AddPlayerForm : Form
     {
 
-        private List<Player> players = new List<Player>();
+        private List<Player> players;
         public List<Player> Players { get { return players; } }
+        private bool validColour;
+        private bool validName;
 
         public AddPlayerForm()
         {
@@ -25,28 +27,32 @@ namespace OOPSnamkes
         {
             Player tempPlayer = new Player();
             tempPlayer.SetName(tbx_Name.Text);
-            tempPlayer.SetColour(cbx_Colour.Text);
+            tempPlayer.SetColour(cbx_Colour.SelectedItem.ToString());
             players.Add(tempPlayer);
             btn_Add.Enabled = false;
-            
-            if (players.Count<4)
+            validColour = false;
+            validName = false;
+            cbx_Colour.Items.Remove(cbx_Colour.SelectedItem);
+            tbx_Name.Text = "";
+
+            if (cbx_Colour.Items.Count != 0)
             {
-                cbx_Colour.Items.Remove(cbx_Colour.SelectedItem);
-                tbx_Name.Text = "";
                 cbx_Colour.SelectedIndex = 0;
+            }
+            
                 updateInstructions();
                 CheckReadyToPlay();
-            }
 
             
         }
 
         private void AddPlayerForm_Load(object sender, EventArgs e)
         {
+            players = new List<Player>();
             btn_Add.Enabled = false;
             btn_OK.Enabled = false;
-            updateInstructions();
-            cbx_Colour.SelectedIndex = 0;
+            validColour = false;
+            validName = false;
         }
         
         private void updateInstructions()
@@ -60,7 +66,7 @@ namespace OOPSnamkes
             {
                 btn_OK.Enabled = true;
             }
-            if (players.Count == 4)
+            if (players.Count > 4)
             {
                 btn_OK.Enabled = false;
             }
@@ -76,13 +82,30 @@ namespace OOPSnamkes
             btn_OK.DialogResult = DialogResult.OK;
         }
 
-        private void tbx_Name_Switch(object sender, EventArgs e)
+        private void cbx_Colour_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (tbx_Name.Text.Length>0)
+            if(((ComboBox)sender).SelectedItem != null)
+            {
+                validColour = true;
+            }
+            checkPlayerDetails();
+        }
+
+        private void checkPlayerDetails()
+        {
+            if(validName == true && validColour == true)
             {
                 btn_Add.Enabled = true;
             }
-            else btn_Add.Enabled = false;
+        }
+
+        private void tbx_Name_TextChanged(object sender, EventArgs e)
+        {
+            if(((TextBox)sender).Text != "")
+            {
+                validName = true;
+            }
+            checkPlayerDetails();
         }
     }
 }
