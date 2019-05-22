@@ -39,18 +39,20 @@ namespace OOPSnamkes
 
         public Square()
         {
-
+            occupier = new List<Player>();
         }
 
         public Square(int _number)
         {
             this.number = _number;
+            occupier = new List<Player>();
         }
 
         public Square(int _number, int transition)
         {
             this.number = _number;
             this.SetTransition(transition);
+            occupier = new List<Player>();
         }
         public void AddPlayer(Player player)
         {

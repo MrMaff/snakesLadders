@@ -25,6 +25,7 @@ namespace OOPSnamkes
             foreach (var person in players)
             {
                 this.players.Enqueue(person);
+                this.players.Last().SetSquare(gameboard.Squares[0]);
             }
         }
 
@@ -50,11 +51,11 @@ namespace OOPSnamkes
 
         public void PlayGame()
         {
-            
-                Player currentPlayer = new Player();
 
-                GetPlayers();
-                CreateBoard();
+            Player currentPlayer = new Player();
+
+            CreateBoard();
+            GetPlayers();
 
             if ((null != players && players.Count >= 0))
             {

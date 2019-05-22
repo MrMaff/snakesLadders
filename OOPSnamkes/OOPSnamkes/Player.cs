@@ -58,6 +58,12 @@ namespace OOPSnamkes
             
         }
 
+        public void SetSquare(Square CurrentSquare)
+        {
+            this.currentSquare = CurrentSquare;
+            this.currentSquare.AddPlayer(this);
+        }
+
         /// <summary>
         /// Applys the rules of the square ie it either sets the the player as a winner or it move the transition spaces.
         /// </summary>
