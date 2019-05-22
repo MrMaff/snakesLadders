@@ -49,7 +49,17 @@ namespace OOPSnamkes
         {
             currentSquare.RemovePlayer(this);
 
-            this.currentSquare = GameBoard.Squares[currentSquare.Number + rollTotal - 1];
+            int temp = currentSquare.Number + rollTotal - 1;
+
+            if(temp >= 100)
+            {
+                this.currentSquare = GameBoard.Squares[99];
+            }else
+            {
+                this.currentSquare = GameBoard.Squares[temp];
+            }
+
+
 
             //Given the new position, put the player in the new square.
             currentSquare.AddPlayer(this);
