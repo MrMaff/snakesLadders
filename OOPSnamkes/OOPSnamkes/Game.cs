@@ -19,7 +19,9 @@ namespace OOPSnamkes
         }
 
         public void CreatePlayerQueue(List<Player> players)
-        {   
+        {
+            this.players = new Queue<Player>();
+
             foreach (var person in players)
             {
                 this.players.Enqueue(person);

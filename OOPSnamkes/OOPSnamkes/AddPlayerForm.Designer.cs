@@ -71,6 +71,7 @@
             this.tbx_Name.Name = "tbx_Name";
             this.tbx_Name.Size = new System.Drawing.Size(170, 20);
             this.tbx_Name.TabIndex = 3;
+            this.tbx_Name.TextChanged += new System.EventHandler(this.tbx_Name_TextChanged);
             // 
             // cbx_Colour
             // 
@@ -84,6 +85,7 @@
             this.cbx_Colour.Name = "cbx_Colour";
             this.cbx_Colour.Size = new System.Drawing.Size(170, 21);
             this.cbx_Colour.TabIndex = 4;
+            this.cbx_Colour.SelectedValueChanged += new System.EventHandler(this.cbx_Colour_SelectedValueChanged);
             // 
             // btn_Cancel
             // 
