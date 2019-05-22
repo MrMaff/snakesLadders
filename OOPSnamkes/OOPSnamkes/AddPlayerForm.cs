@@ -13,7 +13,7 @@ namespace OOPSnamkes
     public partial class AddPlayerForm : Form
     {
 
-        private List<Player> players;
+        private List<Player> players = new List<Player>();
         public List<Player> Players { get { return players; } }
         private bool validColour;
         private bool validName;
@@ -23,11 +23,21 @@ namespace OOPSnamkes
             InitializeComponent();
         }
 
+        private void AddPlayerForm_Load(object sender, EventArgs e)
+        {
+            btn_Add.Enabled = false;
+            btn_OK.Enabled = false;
+            validColour = false;
+            validName = false;
+            updateInstructions();
+            cbx_Colour.SelectedIndex = 0;
+        }
+
         private void btn_Add_Click(object sender, EventArgs e)
         {
             Player tempPlayer = new Player();
             tempPlayer.SetName(tbx_Name.Text);
-            tempPlayer.SetColour(cbx_Colour.SelectedItem.ToString());
+            tempPlayer.SetColour(cbx_Colour.Text);
             players.Add(tempPlayer);
             btn_Add.Enabled = false;
             validColour = false;
@@ -39,21 +49,18 @@ namespace OOPSnamkes
             {
                 cbx_Colour.SelectedIndex = 0;
             }
-            
+            else if (players.Count < 4)
+            {
+                
                 updateInstructions();
+            }
+            
+                
                 CheckReadyToPlay();
 
             
         }
 
-        private void AddPlayerForm_Load(object sender, EventArgs e)
-        {
-            players = new List<Player>();
-            btn_Add.Enabled = false;
-            btn_OK.Enabled = false;
-            validColour = false;
-            validName = false;
-        }
         
         private void updateInstructions()
         {
@@ -97,15 +104,23 @@ namespace OOPSnamkes
             {
                 btn_Add.Enabled = true;
             }
+            
         }
 
         private void tbx_Name_TextChanged(object sender, EventArgs e)
         {
-            if(((TextBox)sender).Text != "")
+            if(tbx_Name.Text.Length > 0)
             {
-                validName = true;
+                //validName = true;
+                btn_Add.Enabled = true;
             }
-            checkPlayerDetails();
+            else
+            {   
+                //validName = false;
+                btn_Add.Enabled = false;
+            }
+
+            //checkPlayerDetails();
         }
     }
 }
