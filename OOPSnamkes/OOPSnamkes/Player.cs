@@ -8,12 +8,27 @@ namespace OOPSnamkes
 {
     public class Player
     {       
-        private string name;  //Need a property so that the name can be read but not written to at a later date
+        private string name;
         private string colour;
         public bool winner;        
         private Shaker shaker;
         private Square currentSquare;
         
+
+        public string Colour
+        {
+            get
+            {
+                return this.colour;
+            }
+        }
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+        }
 
         public Player()
         {
