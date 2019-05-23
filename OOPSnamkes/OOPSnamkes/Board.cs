@@ -19,7 +19,7 @@ namespace OOPSnamkes
 
         private void LoadBoard()
         {
-            Regex IamREGEX = new Regex(@"(\d+)([a-zA-Z]+)(\d*)");
+            Regex IamREGEX = new Regex(@"(\d+)(\w+)(\d*)");
 
             string Boardtxt = OOPSnamkes.Properties.Resources.IamTheBOARD;
             List<string> currentFile = Boardtxt.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();

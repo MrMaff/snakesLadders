@@ -45,7 +45,6 @@ namespace OOPSnamkes
         public Square(int _number)
         {
             this.number = _number;
-            this.SetTransition(_number);
             occupier = new List<Player>();
         }
 
