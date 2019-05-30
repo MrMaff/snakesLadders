@@ -10,31 +10,32 @@ namespace OOPSnamkes
     {
         private int totalRoll = 0;
 
-        Dice roll1;
-        Dice roll2;
+        public Dice Dice1 { get; } = new Dice();
+        public Dice Dice2 { get; } = new Dice();
+        public Dice Dice3 { get; } = new Dice();
 
         public int GetTotal()
         {
             bool equal;
 
-            roll1 = new Dice();
-            roll2 = new Dice();
+            Dice1.Roll();
+            Dice2.Roll();
 
-            totalRoll = roll1.FaceValues + roll2.FaceValues;
+            totalRoll = Dice1.FaceValue + Dice2.FaceValue;
 
-            equal = CompareDice();
+            //equal = CompareDice();
 
-            if (equal)
-            {
-                Roll3();
-            }
+            //if (equal)
+            //{
+            //    Roll3();
+            //}
             return totalRoll;
         }
         private bool CompareDice()
         {
             bool equal = false;
 
-            if (roll1.FaceValues == roll2.FaceValues)
+            if (Dice1.FaceValue == Dice2.FaceValue)
             {
                 equal = true;
             }
@@ -43,29 +44,10 @@ namespace OOPSnamkes
 
         private void Roll3()
         {
-            Dice roll3 = new Dice();
+            Dice3.Roll();
 
-            totalRoll = totalRoll + roll3.FaceValues;
+            totalRoll = totalRoll + Dice3.FaceValue;
         }
     }
 
-    class Dice
-    {
-        private int faceValue;
-        private int min = 1;
-        private int max = 6;
-
-        public int FaceValues
-        {
-            get
-            {
-                return faceValue;
-            }
-        }
-        public Dice()
-        {
-            Random rnd = new Random();
-            faceValue = rnd.Next(min, max + 1);
-        }
-    }
 }

@@ -133,6 +133,16 @@ namespace OOPSnamkes.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap felt {
+            get {
+                object obj = ResourceManager.GetObject("felt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap greenCounter {
             get {
                 object obj = ResourceManager.GetObject("greenCounter", resourceCulture);
@@ -141,26 +151,34 @@ namespace OOPSnamkes.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 8Normal
-        ///1Ladder22
+        ///   Looks up a localized string similar to 4Normal
+        ///1Ladder21
+        ///2Normal
+        ///1Ladder26
+        ///5Normal
+        ///1Snake7
+        ///9Normal
+        ///1Snake22
+        ///8Normal
+        ///1Ladder33
+        ///3Normal
+        ///1Ladder19
+        ///12Normal
+        ///1Ladder42
+        ///2Normal
+        ///1Snake24
         ///6Normal
-        ///1Ladder29
+        ///1Snake22
         ///1Normal
-        ///1Ladder46
-        ///13Normal
-        ///1Snake27
-        ///15Normal
-        ///1Ladder18
-        ///1Normal
-        ///1Ladder43
-        ///12Normal
-        ///1Ladder18
-        ///10Normal
-        ///1Snake52
+        ///1Ladder23
         ///11Normal
-        ///1Snake35
-        ///12Normal
-        ///1Snake60
+        ///1Ladder19
+        ///1Snake50
+        ///19Normal
+        ///1Snake23
+        ///2Normal
+        ///1Snake41
+        ///1Normal
         ///1Finito.
         /// </summary>
         internal static string IamTheBOARD {

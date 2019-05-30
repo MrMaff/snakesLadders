@@ -57,12 +57,14 @@ namespace OOPSnamkes  //MLO
             CreateBoard();
             if (GetPlayers())
             {
-
+                TableTop tableTop = new TableTop();
                 Player currentPlayer = new Player();
+                tableTop.Show();
 
                 do
                 {
                     currentPlayer = players.Dequeue();
+
                     currentPlayer.TakeTurn(gameboard);
                     players.Enqueue(currentPlayer);
 
