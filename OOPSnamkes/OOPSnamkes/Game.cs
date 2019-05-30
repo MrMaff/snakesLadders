@@ -27,19 +27,23 @@ namespace OOPSnamkes  //MLO
             }
         }
 
-        private void GetPlayers()
+        private bool GetPlayers()
         {
+            bool readytoplay;
             AddPlayerForm addPlayerForm = new AddPlayerForm();
             addPlayerForm.ShowDialog();
             if (addPlayerForm.DialogResult == DialogResult.OK)
             {
                 CreatePlayerQueue(addPlayerForm.Players);
+                readytoplay = true;
             }
             else
             {
                 Console.Beep();
+                readytoplay = false;
             }
             addPlayerForm.Dispose();
+            return readytoplay;
         }
 
         private void CreateBoard()
@@ -51,17 +55,20 @@ namespace OOPSnamkes  //MLO
         {
             
             CreateBoard();
-            GetPlayers();
+            if (GetPlayers())
+            {
 
                 Player currentPlayer = new Player();
 
-                    do
-                    {
-                        currentPlayer = players.Dequeue();
-                        currentPlayer.TakeTurn(gameboard);
-                        players.Enqueue(currentPlayer);
+                do
+                {
+                    currentPlayer = players.Dequeue();
+                    currentPlayer.TakeTurn(gameboard);
+                    players.Enqueue(currentPlayer);
 
-                    } while (currentPlayer.winner == false);
+                } while (currentPlayer.winner == false);
+            }
+            
       
         }
 

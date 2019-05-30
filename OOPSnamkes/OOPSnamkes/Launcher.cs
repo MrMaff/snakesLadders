@@ -10,18 +10,31 @@ using System.Windows.Forms;
 
 namespace OOPSnamkes
 {
-    public partial class Form1 : Form
+    public partial class Launcher : Form
     {
 
         Game game = new Game();
-        public Form1()
+        public Launcher()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btn_Quit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_NewGame_Click(object sender, EventArgs e)
+        {
+            this.Hide();
             game.PlayGame();
+            this.Show();
+            
         }
     }
 }
