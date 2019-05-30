@@ -23,15 +23,15 @@ namespace OOPSnamkes
 
             totalRoll = Dice1.FaceValue + Dice2.FaceValue;
 
-            //equal = CompareDice();
+            equal = CompareDice();
 
-            //if (equal)
-            //{
-            //    Roll3();
-            //}
+            if (equal)
+            {
+                Roll3();
+            }
             return totalRoll;
         }
-        private bool CompareDice()
+        public bool CompareDice()
         {
             bool equal = false;
 

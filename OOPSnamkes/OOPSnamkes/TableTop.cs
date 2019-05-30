@@ -37,7 +37,11 @@ namespace OOPSnamkes
         {
             
             roller.GetTotal();
-            pbx_Shaker.Image = shaker.DrawShaker(roller.Dice1.FaceValue, roller.Dice2.FaceValue);
+            if (roller.CompareDice())
+            {
+                pbx_Shaker.Image = shaker.DrawShaker(roller.Dice1.FaceValue, roller.Dice2.FaceValue, roller.Dice3.FaceValue);
+            }
+            else pbx_Shaker.Image = shaker.DrawShaker(roller.Dice1.FaceValue, roller.Dice2.FaceValue);
         }
     }
 }
