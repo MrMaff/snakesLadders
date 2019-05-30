@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace OOPSnamkes
 {
@@ -14,7 +16,8 @@ namespace OOPSnamkes
         private Shaker shaker;
         private Square currentSquare;
         public string Name { get { return name; } }
-        
+        public string Colour { get { return colour; } }
+        public string CurrentSqaure { get { return currentSquare.Number.ToString(); } }
 
         public Player()
         {
@@ -84,6 +87,7 @@ namespace OOPSnamkes
             if(currentSquare.Type == 'S' || currentSquare.Type == 'L')
             {
                 Move(currentSquare.Transition, GameBoard);
+                MessageBox.Show($" You have landed on a {currentSquare.Type}");
             }
             
             CheckForWin();

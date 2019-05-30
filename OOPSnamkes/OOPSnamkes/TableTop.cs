@@ -48,16 +48,18 @@ namespace OOPSnamkes
             }
             else pbx_Shaker.Image = shaker.DrawShaker(roller.Dice1.FaceValue, roller.Dice2.FaceValue);
 
-            pbx_Board.Image = board.DrawBoard();
+            pbx_Board.Image = board.UpdateBoard(game.gameboard);
+            
 
             currentPlayer.ApplyRules(GameBoard: game.gameboard);
+            
 
-            pbx_Board.Image = board.DrawBoard();
+            pbx_Board.Image = board.UpdateBoard(game.gameboard);
 
             if (currentPlayer.winner)
             {
                 //Declare Winner
-                MessageBox.Show("You Win");
+                MessageBox.Show($" {currentPlayer.Name} You Win!");
             }
             else
             {
@@ -77,7 +79,7 @@ namespace OOPSnamkes
 
         private void updatePlayerName()
         {
-            lbl_PlayerName.Text = $"Player: {(currentPlayer.Name)} It's your turn! ";
+            lbl_PlayerName.Text = $"Player: {currentPlayer.Name} It's your turn! ";
         }
     }
 }
