@@ -13,6 +13,7 @@ namespace OOPSnamkes
         public bool winner;        
         private Shaker shaker;
         private Square currentSquare;
+        public string Name { get { return name; } }
         
 
         public Player()
@@ -38,6 +39,7 @@ namespace OOPSnamkes
         public void TakeTurn(Board GameBoard)
         {
                 Move(shaker.GetTotal(), GameBoard);
+                ApplyRules(GameBoard);
         }
 
         /// <summary>
@@ -45,7 +47,7 @@ namespace OOPSnamkes
         /// A player must leave their current square then be placed in their new square.
         /// </summary>
         /// <param name="rollTotal"></param>
-        private void Move(int rollTotal, Board GameBoard)
+        public void Move(int rollTotal, Board GameBoard)
         {
             currentSquare.RemovePlayer(this);
 
@@ -64,7 +66,7 @@ namespace OOPSnamkes
             //Given the new position, put the player in the new square.
             currentSquare.AddPlayer(this);
 
-            ApplyRules(GameBoard);
+            
             
         }
 
@@ -77,7 +79,7 @@ namespace OOPSnamkes
         /// <summary>
         /// Applys the rules of the square ie it either sets the the player as a winner or it move the transition spaces.
         /// </summary>
-        private void ApplyRules(Board GameBoard)
+        public void ApplyRules(Board GameBoard)
         {
             if(currentSquare.Type == 'S' || currentSquare.Type == 'L')
             {

@@ -10,8 +10,10 @@ namespace OOPSnamkes  //MLO
     public class Game
     {
         private Queue<Player> players = new Queue<Player>();
-        private Board gameboard;
+        public Board gameboard;
         public int NumberOfPlayers { get { return players.Count; } }
+        public Player CurrentPlayer
+            { get { return players.Peek();} }
 
         public Game()
         {
@@ -57,21 +59,24 @@ namespace OOPSnamkes  //MLO
             CreateBoard();
             if (GetPlayers())
             {
-                TableTop tableTop = new TableTop();
-                Player currentPlayer = new Player();
+                TableTop tableTop = new TableTop(this);
+
                 tableTop.Show();
+                //Player currentPlayer = new Player();
+                //do
+                //{
+                //    currentPlayer = players.Dequeue();
 
-                do
-                {
-                    currentPlayer = players.Dequeue();
-                    
-                    currentPlayer.TakeTurn(gameboard);
-                    players.Enqueue(currentPlayer);
+                //    currentPlayer.TakeTurn(gameboard);
+                //    players.Enqueue(currentPlayer);
 
-                } while (currentPlayer.winner == false);
+                //} while (currentPlayer.winner == false);
             }
-            
-      
+
+        }
+        public void NextPlayer()
+        {
+            players.Enqueue(players.Dequeue());
         }
 
     }
