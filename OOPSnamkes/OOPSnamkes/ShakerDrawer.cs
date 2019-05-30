@@ -15,9 +15,9 @@ namespace OOPSnamkes
 
         RectangleF die1Location { get
             {
-                int x = shakerImage.Width / 10;
-                int y = shakerImage.Height / 4;
-                int size = shakerImage.Width / 4;
+                int x = shakerImage.Width / 5;
+                int y = shakerImage.Height / 3;
+                int size = shakerImage.Width / 3;
 
                 return new RectangleF(x, y,size,size);
             } }
@@ -25,9 +25,9 @@ namespace OOPSnamkes
         {
             get
             {
-                int x = (shakerImage.Width / 10)*3;
-                int y = shakerImage.Height / 4;
-                int size = shakerImage.Width / 4;
+                int x = (shakerImage.Width / 5) * 3;
+                int y = shakerImage.Height / 3;
+                int size = shakerImage.Width / 3;
 
                 return new RectangleF(x, y, size, size);
             }

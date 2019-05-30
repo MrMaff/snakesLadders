@@ -12,7 +12,7 @@ namespace OOPSnamkes
 {
     public partial class TableTop : Form
     {
-        ShakerDrawer shaker = new ShakerDrawer();
+        ShakerDrawer shaker;
         BoardDrawer board;
         Shaker roller = new Shaker();
 
@@ -24,7 +24,7 @@ namespace OOPSnamkes
 
         private void TableTop_Load(object sender, EventArgs e)
         {
-            //DrawBoard
+            shaker = new ShakerDrawer(pbx_Shaker.Width, pbx_Shaker.Height);
             board = new BoardDrawer(pbx_Board.Width, pbx_Board.Height);
 
 

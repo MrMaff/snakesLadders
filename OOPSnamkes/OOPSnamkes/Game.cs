@@ -64,7 +64,7 @@ namespace OOPSnamkes  //MLO
                 do
                 {
                     currentPlayer = players.Dequeue();
-
+                    
                     currentPlayer.TakeTurn(gameboard);
                     players.Enqueue(currentPlayer);
 
