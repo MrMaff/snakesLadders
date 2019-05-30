@@ -52,6 +52,7 @@
       <DependentUpon>AddPlayerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Board.cs" />
+    <Compile Include="BoardDrawer.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Launcher.cs">
       <SubType>Form</SubType>
