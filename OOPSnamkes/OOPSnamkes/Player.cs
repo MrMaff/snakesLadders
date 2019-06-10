@@ -64,6 +64,7 @@ namespace OOPSnamkes
                 this.currentSquare = GameBoard.Squares[temp];
             }
 
+            MessageBox.Show($" You have landed on Sqaure {currentSquare.Number}");
 
 
             //Given the new position, put the player in the new square.
@@ -86,8 +87,8 @@ namespace OOPSnamkes
         {
             if(currentSquare.Type == 'S' || currentSquare.Type == 'L')
             {
-                Move(currentSquare.Transition, GameBoard);
                 MessageBox.Show($" You have landed on a {currentSquare.Type}");
+                Move(currentSquare.Transition, GameBoard);
             }
             
             CheckForWin();

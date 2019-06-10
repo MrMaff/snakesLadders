@@ -93,11 +93,17 @@ namespace OOPSnamkes
             {
                 //right to left
                 x =  11 - (count % 10);
+                if (x == 11) { x = 1; };
+            }
+            else if (count % 20 < 10)
+            {
+                //left to right
+                x = (count % 10);
+                if (x == 0) { x = 1; };
             }
             else
             {
-                //left to right
-                x = count % 10;
+                x = 10;
             }
             x = (squareSize * x) - squareSize;
             return x;
@@ -106,8 +112,16 @@ namespace OOPSnamkes
         int yloc(int count)
         {
             int y = 0;
-            double temp = count;
-            y = (count / 10) + 1;
+            //double temp = count;
+            if (count % 10 != 0)
+            {
+                y = (count / 10) + 1;
+            }
+            else
+            {
+                y = (count / 10);
+            }
+            
             y = (11 - y) * squareSize - squareSize;
             return y;
         }
