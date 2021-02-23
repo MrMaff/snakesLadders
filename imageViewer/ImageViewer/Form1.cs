@@ -40,8 +40,9 @@ namespace ImageViewer
                     for (int x = 0; x < 20; x++)
                     {
                         Color tempColour = myPicture.GetPixel(x, y);
+                        int grey = (int)((tempColour.R + tempColour.G + tempColour.B) / 3);
 
-                        if (tempColour.B < 125)
+                        if (grey < 125)
                         {
                             myMap[x, y] = 1;
                         }
@@ -69,7 +70,7 @@ namespace ImageViewer
             {
                 Image image = Image.FromStream(bmpStream);
                 Graphics g = Graphics.FromImage(tempIMG);
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
                 g.DrawImage(image, 0, 0, 20, 20);
                
             }
@@ -85,7 +86,7 @@ namespace ImageViewer
             {
                 for (int x = 0; x < 20; x++)
                 {
-                    tempMap = tempMap + myMap[x, y].ToString();
+                    tempMap = tempMap + myMap[x, y].ToString()+" ";
                 }
                 tempMap = tempMap + System.Environment.NewLine;
             }
