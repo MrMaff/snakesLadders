@@ -99,6 +99,8 @@
             // 
             this.cbx_Shape.FormattingEnabled = true;
             this.cbx_Shape.Items.AddRange(new object[] {
+            "Cirlce",
+            "Ellipse",
             "Line",
             "Rectangle"});
             this.cbx_Shape.Location = new System.Drawing.Point(13, 184);

@@ -25,12 +25,12 @@ namespace OOPDraw2021
         bool dragging = false;
         Point startOfDrag = Point.Empty;
         Point lastMousePosition = Point.Empty;
-        List<object> shapes = new List<object>();
+        List<Shape> shapes = new List<Shape>();
 
         private void pbx_Canvas_Paint(object sender, PaintEventArgs e)
         {
             Graphics gr = e.Graphics;
-            foreach (dynamic shape in shapes)
+            foreach (Shape shape in shapes)
             {
                 shape.Draw(gr);
             }
@@ -48,16 +48,22 @@ namespace OOPDraw2021
                 case "Rectangle":
                     shapes.Add(new Rectangle(currentPen, e.X, e.Y));
                     break;
+                case "Ellipse":
+                    shapes.Add(new Ellipse(currentPen, e.X, e.Y));
+                    break;
+                case "Cirlce":
+                    shapes.Add(new Circle(currentPen, e.X, e.Y));
+                    break;
             }
 
-            
+
         }
 
         private void pbx_Canvas_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragging)
             {
-                dynamic shape = shapes.Last();
+                Shape shape = shapes.Last();
                 shape.GrowTo(e.X, e.Y);
                 lastMousePosition = e.Location;
                 Refresh();

@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Circle.cs" />
+    <Compile Include="Ellipse.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="OOPDraw.cs">
       <SubType>Form</SubType>
@@ -55,6 +57,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle.cs" />
+    <Compile Include="Shape.cs" />
     <EmbeddedResource Include="OOPDraw.resx">
       <DependentUpon>OOPDraw.cs</DependentUpon>
     </EmbeddedResource>
