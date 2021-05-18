@@ -19,11 +19,11 @@ namespace OOPDraw2021
 
         public override void Draw(Graphics g)
         {
-            Tuple<int, int, int, int> bounds = EnclosingRectangle();
-            int x = bounds.Item1;
-            int y = bounds.Item2;
-            int w = bounds.Item3;
-            int h = bounds.Item3;
+            (int x, int y, int w, int h) = EnclosingRectangle();
+            //int x = bounds.Item1;
+            //int y = bounds.Item2;
+            //int w = bounds.Item3;
+            //int h = bounds.Item3;
 
 
 

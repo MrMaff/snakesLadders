@@ -35,14 +35,14 @@ namespace OOPDraw2021
         }
 
         //Helper Method
-        public Tuple<int, int, int, int> EnclosingRectangle()
+        public (int, int, int, int) EnclosingRectangle()
         {
             int x = Math.Min(X1, X2);
             int y = Math.Min(Y1, Y2);
             int w = Math.Max(X1, X2) - x;
             int h = Math.Max(Y1, Y2) - y;
 
-            return new Tuple<int, int, int, int>(x, y, w, h);          
+            return (x, y, w, h);          
         }
     }
 }
