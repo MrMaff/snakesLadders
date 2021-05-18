@@ -19,11 +19,7 @@ namespace OOPDraw2021
 
         public override void Draw(Graphics g)
         {
-            (int x, int y, int w, int h) = EnclosingRectangle();
-            if (w > 0 && h > 0)
-            {
-                g.DrawArc(Pen, x, y, w, h, 0F, 360F);
-            }
+            DrawingFunctions.DrawClosedArc(g, this);
         }
     }
 }
