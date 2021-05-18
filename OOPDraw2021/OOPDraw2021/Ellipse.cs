@@ -19,10 +19,7 @@ namespace OOPDraw2021
 
         public override void Draw(Graphics g)
         {
-            int x = Math.Min(X1, X2);
-            int y = Math.Min(Y1, Y2);
-            int w = Math.Max(X1, X2) - x;
-            int h = Math.Max(Y1, Y2) - y;
+            (int x, int y, int w, int h) = EnclosingRectangle();
             if (w > 0 && h > 0)
             {
                 g.DrawArc(Pen, x, y, w, h, 0F, 360F);
