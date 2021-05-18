@@ -35,6 +35,8 @@
             this.cbx_Colour = new System.Windows.Forms.ComboBox();
             this.cbx_Shape = new System.Windows.Forms.ComboBox();
             this.lbl_Shape = new System.Windows.Forms.Label();
+            this.lbl_Action = new System.Windows.Forms.Label();
+            this.cbx_Action = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbx_Canvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,11 +119,34 @@
             this.lbl_Shape.TabIndex = 6;
             this.lbl_Shape.Text = "Shape";
             // 
+            // lbl_Action
+            // 
+            this.lbl_Action.AutoSize = true;
+            this.lbl_Action.Location = new System.Drawing.Point(13, 241);
+            this.lbl_Action.Name = "lbl_Action";
+            this.lbl_Action.Size = new System.Drawing.Size(54, 20);
+            this.lbl_Action.TabIndex = 7;
+            this.lbl_Action.Text = "Action";
+            // 
+            // cbx_Action
+            // 
+            this.cbx_Action.FormattingEnabled = true;
+            this.cbx_Action.Items.AddRange(new object[] {
+            "Draw",
+            "Move",
+            "Select"});
+            this.cbx_Action.Location = new System.Drawing.Point(12, 265);
+            this.cbx_Action.Name = "cbx_Action";
+            this.cbx_Action.Size = new System.Drawing.Size(218, 28);
+            this.cbx_Action.TabIndex = 8;
+            // 
             // OOPDraw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1187, 708);
+            this.Controls.Add(this.cbx_Action);
+            this.Controls.Add(this.lbl_Action);
             this.Controls.Add(this.lbl_Shape);
             this.Controls.Add(this.cbx_Shape);
             this.Controls.Add(this.cbx_Colour);
@@ -146,6 +171,8 @@
         private System.Windows.Forms.ComboBox cbx_Colour;
         private System.Windows.Forms.ComboBox cbx_Shape;
         private System.Windows.Forms.Label lbl_Shape;
+        private System.Windows.Forms.Label lbl_Action;
+        private System.Windows.Forms.ComboBox cbx_Action;
     }
 }
 

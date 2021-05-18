@@ -19,6 +19,7 @@ namespace OOPDraw2021
             cbx_LineWidth.SelectedItem = "Medium";
             cbx_Colour.SelectedItem = "Green";
             cbx_Shape.SelectedItem = "Line";
+            cbx_Action.SelectedItem = "Draw";
         }
 
         Pen currentPen = new Pen(Color.Black);
@@ -26,6 +27,7 @@ namespace OOPDraw2021
         Point startOfDrag = Point.Empty;
         Point lastMousePosition = Point.Empty;
         List<Shape> shapes = new List<Shape>();
+        Rectangle selectionBox;
 
         private void pbx_Canvas_Paint(object sender, PaintEventArgs e)
         {
@@ -34,12 +36,30 @@ namespace OOPDraw2021
             {
                 shape.Draw(gr);
             }
+            if (selectionBox != null) selectionBox.Draw(gr);
         }
 
         private void pbx_Canvas_MouseDown(object sender, MouseEventArgs e)
         {
             dragging = true;
             startOfDrag = lastMousePosition = e.Location;
+
+            switch (cbx_Action.Text)
+            {
+                case "Draw":
+                    AddShape(e);
+                    break;
+                case "Select":
+                    Pen p = new Pen(Color.Black, 1.0F);
+                    selectionBox = new Rectangle(p, startOfDrag.X, startOfDrag.Y);
+                    break;
+            }
+
+        }
+
+        private void AddShape(MouseEventArgs e)
+        {
+
             switch (cbx_Shape.Text)
             {
                 case "Line":
@@ -56,15 +76,30 @@ namespace OOPDraw2021
                     break;
             }
 
-
         }
 
         private void pbx_Canvas_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragging)
             {
-                Shape shape = shapes.Last();
-                shape.GrowTo(e.X, e.Y);
+                
+
+                switch (cbx_Action.Text)
+                {
+                    case "Move":                    
+                        MoveSelectedShapes(e);
+                        break;
+                    case "Draw":
+                        Shape shape = shapes.Last();
+                        shape.GrowTo(e.X, e.Y);
+                        break;
+                    case "Select":
+                        this.selectionBox.GrowTo(e.X, e.Y);
+                        this.SelectShapes();
+                        break;
+                }
+
+
                 lastMousePosition = e.Location;
                 Refresh();
             }
@@ -73,6 +108,9 @@ namespace OOPDraw2021
         private void pbx_Canvas_MouseUp(object sender, MouseEventArgs e)
         {
             dragging = false;
+            lastMousePosition = Point.Empty;
+            selectionBox = null;
+            Refresh();
         }
 
         private void cbx_LineWidth_SelectedIndexChanged(object sender, EventArgs e)
@@ -109,6 +147,37 @@ namespace OOPDraw2021
                     break;
             }
             currentPen = new Pen(colour, currentPen.Width);
+        }
+
+        private void DeselectAll()
+        {
+            foreach(Shape s in shapes)
+            {
+                s.Deselect();
+            }
+        }
+
+        private void SelectShapes()
+        {
+            DeselectAll();
+            foreach(Shape s in shapes)
+            {
+                if (selectionBox.FullSurrounds(s)) s.Select();
+            }
+        }
+
+        private List<Shape> GetSelectedShapes()
+        {
+            return shapes.Where(s => s.Selected).ToList();
+        }
+
+        private void MoveSelectedShapes(MouseEventArgs e)
+        {
+            foreach (Shape s in GetSelectedShapes())
+            {
+                s.MoveBy(e.X - lastMousePosition.X, e.Y - lastMousePosition.Y);
+            }
+
         }
     }
 }

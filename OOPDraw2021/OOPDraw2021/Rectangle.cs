@@ -19,15 +19,17 @@ namespace OOPDraw2021
 
         public override void Draw(Graphics g)
         {
-            (int x, int y, int w, int h) = EnclosingRectangle();
-            //int x = bounds.Item1;
-            //int y = bounds.Item2;
-            //int w = bounds.Item3;
-            //int h = bounds.Item3;
-
-
-
+            (int x, int y, int w, int h) = EnclosingRectangle();           
             g.DrawRectangle(Pen, x, y, w, h);
+        }
+
+        public bool FullSurrounds(Shape s)
+        {
+            bool isSurrounded;
+            (int x, int y, int w, int h) = this.EnclosingRectangle();
+            (int xs, int ys, int ws, int hs) = s.EnclosingRectangle();
+            isSurrounded = (x < xs && y < ys && x + w > xs + ws && y + h > ys + hs);
+            return isSurrounded;
         }
 
     }
