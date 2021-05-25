@@ -48,7 +48,7 @@ namespace OOPDraw2021
             return (x, y, w, h);          
         }
 
-        public void MoveBy(int xDelta, int yDelta)
+        public virtual void MoveBy(int xDelta, int yDelta)
         {
             X1 += xDelta;
             Y1 += yDelta;
@@ -56,13 +56,13 @@ namespace OOPDraw2021
             Y2 += yDelta;
         }
 
-        public void Select()
+        public virtual void Select()
         {
             this.Selected = true;
             Pen.DashStyle = DashStyle.Dash;
         }
 
-        public void Deselect()
+        public virtual void Deselect()
         {
             this.Selected = false;
             Pen.DashStyle = DashStyle.Solid;

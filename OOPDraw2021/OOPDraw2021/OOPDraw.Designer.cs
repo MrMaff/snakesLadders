@@ -134,11 +134,13 @@
             this.cbx_Action.Items.AddRange(new object[] {
             "Draw",
             "Move",
-            "Select"});
+            "Select",
+            "Group"});
             this.cbx_Action.Location = new System.Drawing.Point(12, 265);
             this.cbx_Action.Name = "cbx_Action";
             this.cbx_Action.Size = new System.Drawing.Size(218, 28);
             this.cbx_Action.TabIndex = 8;
+            this.cbx_Action.SelectedIndexChanged += new System.EventHandler(this.cbx_Action_SelectedIndexChanged);
             // 
             // OOPDraw
             // 

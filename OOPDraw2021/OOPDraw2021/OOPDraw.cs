@@ -99,7 +99,6 @@ namespace OOPDraw2021
                         break;
                 }
 
-
                 lastMousePosition = e.Location;
                 Refresh();
             }
@@ -178,6 +177,31 @@ namespace OOPDraw2021
                 s.MoveBy(e.X - lastMousePosition.X, e.Y - lastMousePosition.Y);
             }
 
+        }
+
+        private void cbx_Action_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbx_Action.Text)
+            {
+                case "Group":
+                    GroupSelectedShapes();
+                    break;
+            }
+        }
+
+        private void GroupSelectedShapes()
+        {
+            var members = GetSelectedShapes();
+            if (members.Count < 2) return; //Group has no effect
+            CompositeShape compS = new CompositeShape(members);
+            compS.Select();
+            shapes.Add(compS);
+            foreach (Shape m in members)
+            {
+                shapes.Remove(m);
+                m.Deselect();
+            }
+            Refresh();
         }
     }
 }

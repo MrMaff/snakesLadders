@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Circle.cs" />
+    <Compile Include="CompositeShape.cs" />
     <Compile Include="DrawingFunctions.cs" />
     <Compile Include="Ellipse.cs" />
     <Compile Include="Line.cs" />
