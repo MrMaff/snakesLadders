@@ -17,6 +17,12 @@ namespace OOPDraw2021
         {
             GrowTo(x2, y2);
         }
+
+        public override Shape Clone()
+        {
+            return new Circle(Pen, X1, Y1, X2, Y2);
+        }
+
         //blob
         public override void Draw(Graphics g)
         {

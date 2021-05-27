@@ -55,11 +55,12 @@ namespace LinkedListDemo
         public int ElementAt(int index)
         {
             myListNode tempNode = first;
+
             for (int i = 0; i < index; i++)
             {
                 tempNode = tempNode.nextNode;
             }
-
+    
             return tempNode.data;
         }
 

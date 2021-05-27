@@ -186,6 +186,12 @@ namespace OOPDraw2021
                 case "Group":
                     GroupSelectedShapes();
                     break;
+                case "Delete":
+                    DeleteSelectedShapes();
+                    break;
+                case "Duplicate":
+                    DuplicateSelectedShapes();
+                    break;
             }
         }
 
@@ -200,6 +206,28 @@ namespace OOPDraw2021
             {
                 shapes.Remove(m);
                 m.Deselect();
+            }
+            Refresh();
+        }
+
+        private void DeleteSelectedShapes()
+        {
+            foreach (Shape s in GetSelectedShapes())
+            {
+                shapes.Remove(s);
+            }
+            Refresh();
+        }
+
+        private void DuplicateSelectedShapes()
+        {
+            foreach (Shape s in GetSelectedShapes())
+            {
+                s.Deselect();
+                Shape tempShape = s.Clone();
+                tempShape.MoveBy(50, 50);
+                tempShape.Select();
+                shapes.Add(tempShape);
             }
             Refresh();
         }

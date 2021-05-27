@@ -43,9 +43,10 @@
             // pbx_Canvas
             // 
             this.pbx_Canvas.BackColor = System.Drawing.SystemColors.Window;
-            this.pbx_Canvas.Location = new System.Drawing.Point(346, 12);
+            this.pbx_Canvas.Location = new System.Drawing.Point(461, 15);
+            this.pbx_Canvas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbx_Canvas.Name = "pbx_Canvas";
-            this.pbx_Canvas.Size = new System.Drawing.Size(829, 684);
+            this.pbx_Canvas.Size = new System.Drawing.Size(1105, 855);
             this.pbx_Canvas.TabIndex = 0;
             this.pbx_Canvas.TabStop = false;
             this.pbx_Canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pbx_Canvas_Paint);
@@ -60,27 +61,30 @@
             "Thin",
             "Medium",
             "Thick"});
-            this.cbx_LineWidth.Location = new System.Drawing.Point(12, 38);
+            this.cbx_LineWidth.Location = new System.Drawing.Point(16, 48);
+            this.cbx_LineWidth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbx_LineWidth.Name = "cbx_LineWidth";
-            this.cbx_LineWidth.Size = new System.Drawing.Size(218, 28);
+            this.cbx_LineWidth.Size = new System.Drawing.Size(289, 33);
             this.cbx_LineWidth.TabIndex = 1;
             this.cbx_LineWidth.SelectedIndexChanged += new System.EventHandler(this.cbx_LineWidth_SelectedIndexChanged);
             // 
             // lbl_LineWidth
             // 
             this.lbl_LineWidth.AutoSize = true;
-            this.lbl_LineWidth.Location = new System.Drawing.Point(13, 13);
+            this.lbl_LineWidth.Location = new System.Drawing.Point(17, 16);
+            this.lbl_LineWidth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_LineWidth.Name = "lbl_LineWidth";
-            this.lbl_LineWidth.Size = new System.Drawing.Size(84, 20);
+            this.lbl_LineWidth.Size = new System.Drawing.Size(114, 25);
             this.lbl_LineWidth.TabIndex = 2;
             this.lbl_LineWidth.Text = "Line Width";
             // 
             // lbl_Colour
             // 
             this.lbl_Colour.AutoSize = true;
-            this.lbl_Colour.Location = new System.Drawing.Point(12, 85);
+            this.lbl_Colour.Location = new System.Drawing.Point(16, 106);
+            this.lbl_Colour.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Colour.Name = "lbl_Colour";
-            this.lbl_Colour.Size = new System.Drawing.Size(55, 20);
+            this.lbl_Colour.Size = new System.Drawing.Size(75, 25);
             this.lbl_Colour.TabIndex = 3;
             this.lbl_Colour.Text = "Colour";
             // 
@@ -91,9 +95,10 @@
             "Red",
             "Green",
             "Blue"});
-            this.cbx_Colour.Location = new System.Drawing.Point(12, 109);
+            this.cbx_Colour.Location = new System.Drawing.Point(16, 136);
+            this.cbx_Colour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbx_Colour.Name = "cbx_Colour";
-            this.cbx_Colour.Size = new System.Drawing.Size(218, 28);
+            this.cbx_Colour.Size = new System.Drawing.Size(289, 33);
             this.cbx_Colour.TabIndex = 4;
             this.cbx_Colour.SelectedIndexChanged += new System.EventHandler(this.cbx_Colour_SelectedIndexChanged);
             // 
@@ -105,26 +110,29 @@
             "Ellipse",
             "Line",
             "Rectangle"});
-            this.cbx_Shape.Location = new System.Drawing.Point(13, 184);
+            this.cbx_Shape.Location = new System.Drawing.Point(17, 230);
+            this.cbx_Shape.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbx_Shape.Name = "cbx_Shape";
-            this.cbx_Shape.Size = new System.Drawing.Size(217, 28);
+            this.cbx_Shape.Size = new System.Drawing.Size(288, 33);
             this.cbx_Shape.TabIndex = 5;
             // 
             // lbl_Shape
             // 
             this.lbl_Shape.AutoSize = true;
-            this.lbl_Shape.Location = new System.Drawing.Point(12, 158);
+            this.lbl_Shape.Location = new System.Drawing.Point(16, 198);
+            this.lbl_Shape.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Shape.Name = "lbl_Shape";
-            this.lbl_Shape.Size = new System.Drawing.Size(56, 20);
+            this.lbl_Shape.Size = new System.Drawing.Size(74, 25);
             this.lbl_Shape.TabIndex = 6;
             this.lbl_Shape.Text = "Shape";
             // 
             // lbl_Action
             // 
             this.lbl_Action.AutoSize = true;
-            this.lbl_Action.Location = new System.Drawing.Point(13, 241);
+            this.lbl_Action.Location = new System.Drawing.Point(17, 301);
+            this.lbl_Action.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Action.Name = "lbl_Action";
-            this.lbl_Action.Size = new System.Drawing.Size(54, 20);
+            this.lbl_Action.Size = new System.Drawing.Size(72, 25);
             this.lbl_Action.TabIndex = 7;
             this.lbl_Action.Text = "Action";
             // 
@@ -135,18 +143,21 @@
             "Draw",
             "Move",
             "Select",
-            "Group"});
-            this.cbx_Action.Location = new System.Drawing.Point(12, 265);
+            "Group",
+            "Delete",
+            "Duplicate"});
+            this.cbx_Action.Location = new System.Drawing.Point(16, 331);
+            this.cbx_Action.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbx_Action.Name = "cbx_Action";
-            this.cbx_Action.Size = new System.Drawing.Size(218, 28);
+            this.cbx_Action.Size = new System.Drawing.Size(289, 33);
             this.cbx_Action.TabIndex = 8;
             this.cbx_Action.SelectedIndexChanged += new System.EventHandler(this.cbx_Action_SelectedIndexChanged);
             // 
             // OOPDraw
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 708);
+            this.ClientSize = new System.Drawing.Size(1583, 885);
             this.Controls.Add(this.cbx_Action);
             this.Controls.Add(this.lbl_Action);
             this.Controls.Add(this.lbl_Shape);
@@ -156,6 +167,7 @@
             this.Controls.Add(this.lbl_LineWidth);
             this.Controls.Add(this.cbx_LineWidth);
             this.Controls.Add(this.pbx_Canvas);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OOPDraw";
             this.Text = "OOPDraw";
             ((System.ComponentModel.ISupportInitialize)(this.pbx_Canvas)).EndInit();

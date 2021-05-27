@@ -17,6 +17,11 @@ namespace OOPDraw2021
         {
         }
 
+        public override Shape Clone()
+        {
+            return new Ellipse(Pen, X1, Y1, X2, Y2);
+        }
+
         public override void Draw(Graphics g)
         {
             DrawingFunctions.DrawClosedArc(g, this);

@@ -24,7 +24,9 @@ namespace OOPDraw2021
             g.DrawLine(Pen, X1, Y1, X2, Y2);
         }
 
-        
-
+        public override Shape Clone()
+        {
+            return new Line(Pen, X1, Y1, X2, Y2);
+        }
     }
 }

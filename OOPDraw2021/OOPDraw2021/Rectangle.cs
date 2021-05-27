@@ -32,5 +32,9 @@ namespace OOPDraw2021
             return isSurrounded;
         }
 
+        public override Shape Clone()
+        {
+            return new Rectangle(Pen, X1, Y1, X2, Y2);   
+        }
     }
 }

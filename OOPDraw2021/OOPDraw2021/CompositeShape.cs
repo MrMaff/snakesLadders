@@ -64,5 +64,15 @@ namespace OOPDraw2021
             base.Deselect();
         }
 
+        public override Shape Clone()
+        {
+            List<Shape> clones = new List<Shape>();
+
+            foreach (Shape component in Components)
+            {
+                clones.Add(component.Clone());
+            }
+            return new CompositeShape(clones);
+        }
     }
 }
