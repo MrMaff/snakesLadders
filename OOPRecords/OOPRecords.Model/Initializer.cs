@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOPRecords.Model
 {
-    class Initializer
+    public class Initializer
     {
         public void Seed(StudentRepository students)
         {
