@@ -68,9 +68,6 @@ namespace OOPDraw2021
             int h = Math.Max(Y1, Y2) - y;
 
             return (x, y, w, h);          
-        }
-
-        
-       
+        } 
     }
 }
