@@ -2,37 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
-using System.Text.Json;
+
 
 namespace OOPRecords.Model
 {
     public class StudentRepository
     {
-        private List<Student> Students = new List<Student>();
+        private DatabaseContext Context;
         private const string filename = @"studentsFile.json";
 
-        public StudentRepository()
+        public StudentRepository(DatabaseContext context)
         {
-            if (File.Exists(filename))
-            {
-                Load();
-            }
-            else
-            {
-                var initializer = new Initializer();
-                initializer.Seed(this);
-                SaveAll();
-            }
+            Context = context;
             
         }
         public void Add(Student s)
         {
-            Students.Add(s);
+            Context.Students.Add(s);
+            Context.SaveChanges();
         }
         public IEnumerable<Student> AllStudents()
         {
-            return Students;
+            return Context.Students;
         }
 
         public IEnumerable<Student> FindStudentByLastName(string lastname)
@@ -49,28 +40,7 @@ namespace OOPRecords.Model
             s.LastName = lastname;
             s.DateOfBirth = dob;
             Add(s);
-            SaveAll();
             return s;
-        }
-
-        public void Load()
-        {
-            using (StreamReader reader = new StreamReader(filename))
-            {
-                string json = reader.ReadToEnd();
-                Students = JsonSerializer.Deserialize<List<Student>>(json);
-            }
-        }
-
-        public void SaveAll()
-        {
-            using (StreamWriter writer = new StreamWriter(filename))
-            {
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                string json = JsonSerializer.Serialize(Students, options);
-                writer.Write(json);
-                writer.Flush();
-            }
         }
     }
 }

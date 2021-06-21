@@ -8,7 +8,8 @@ namespace OOPRecords.ConsoleUI
     {
         static void Main()
         {
-            var students = new StudentRepository();
+            var context = new DatabaseContext("MLOOOPRecords");
+            var students = new StudentRepository(context);
             while (true)
             {
                 Console.Clear();

@@ -1,4 +1,7 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data.Entity;
 
 
 namespace OOPRecords.Model
@@ -7,7 +10,7 @@ namespace OOPRecords.Model
     {
         public DatabaseContext(string dbName) : base(dbName)
         {
-            Database.SetIntializer(new Initializer());
+            Database.SetInitializer(new Initializer());
         }
 
         public DbSet<Student> Students { get; set; }
