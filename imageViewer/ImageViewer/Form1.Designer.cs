@@ -105,6 +105,7 @@
             // 
             // tbx_Output
             // 
+            this.tbx_Output.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbx_Output.Location = new System.Drawing.Point(38, 12);
             this.tbx_Output.Multiline = true;
             this.tbx_Output.Name = "tbx_Output";

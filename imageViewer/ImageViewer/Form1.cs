@@ -18,7 +18,7 @@ namespace ImageViewer
     {
 
         public Bitmap myPicture;
-        public int[,] myMap = new int[20, 20];
+        public char[,] myMap = new char[20, 20];
 
         public Form1()
         {
@@ -42,13 +42,21 @@ namespace ImageViewer
                         Color tempColour = myPicture.GetPixel(x, y);
                         int grey = (int)((tempColour.R + tempColour.G + tempColour.B) / 3);
 
-                        if (grey < 125)
+                        if (grey < 64)
                         {
-                            myMap[x, y] = 1;
+                            myMap[x, y] = '▓';
                         }
-                        else
+                        else if (grey < 128)
                         {
-                            myMap[x, y] = 0;
+                            myMap[x, y] = '▒';
+                        }
+                        else if (grey < 192)
+                        {
+                            myMap[x, y] = '░';
+                        }
+                        else 
+                        {
+                            myMap[x, y] = ' ';
                         }
                     }
                 }
